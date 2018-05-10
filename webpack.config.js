@@ -6,12 +6,13 @@ module.exports = {
     devtool: 'source-map',
     entry: ['webpack/hot/dev-server', __dirname + '/src/App.jsx'],
     output: {
+        filename: 'bundle.js',
         path: __dirname + '/dist',
-        filename: 'bundle.js'
+        publicPath: "./"
     },
     module: {
         loaders: [{
-            test: /\.(js|jsx)$/,
+            test: /(\.jsx|\.js)$/,
             exclude: /node_modules/,
             loader: 'babel-loader',
         }, {
@@ -34,10 +35,10 @@ module.exports = {
                 from: 'static/index.html',
                 to: 'index.html'
             },
-            // {
-            //     from: 'static/settings.js',
-            //     to: 'settings.js'
-            // },
+            {
+                from: 'static/settings.js',
+                to: 'settings.js'
+            },
         ])
     ],
     devServer: {

@@ -9,7 +9,7 @@
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
     // "eslint.enable": true,
-    // "tslint.enable": false,
+    "tslint.enable": false,
     // "eslint.autoFixOnSave": true,
     "emmet.syntaxProfiles": {
         "javascript": "jsx"
