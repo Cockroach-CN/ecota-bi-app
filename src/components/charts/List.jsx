@@ -10,7 +10,7 @@ class Index extends React.Component {
 
     render() {
 
-        return <div className="ecota-container">
+        return <div>
             {groups.map(group => <div key={group.key} className="chart-group-item">
                 <p>{group.name}</p>
                 <div>

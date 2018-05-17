@@ -50,9 +50,16 @@ class App extends React.Component {
         return component;
     }
 
-    setPage(page) {
-        this.state.page = page;
-        this.setState(this.state);
+    setPage(page, container) {
+        let timeout = 0;
+        if (container) {
+            timeout = 150;
+            container.className = "animated slideOutRight";
+        }
+        setTimeout(() => {
+            this.state.page = page;
+            this.setState(this.state);
+        }, timeout);
     }
 
     setOptions(options) {
