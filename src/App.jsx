@@ -3,7 +3,9 @@ import ReactDom from "react-dom";
 import List from "./components/charts/List.jsx";
 import Info from "./components/charts/Info.jsx";
 import Detail from "./components/charts/Detail.jsx";
+import 'animate.css';
 import "./App.less";
+import "./fonts/iconfont.css";
 import { PAGEMAP } from "./commons/common.js";
 import 'antd-mobile/dist/antd-mobile.css';
 

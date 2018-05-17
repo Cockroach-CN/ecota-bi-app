@@ -18,12 +18,23 @@ class Index extends React.Component {
         this.state = {
             tabs: tabs,
         }
+        this.container = null;
+    }
+
+    componentDidMount() {
+        this.container = this.refs.container;
     }
 
     render() {
 
-        return <div className="ecota-container">
-            <NavBar onLeftClick={() => this.props.setPage(PAGEMAP.LIST)}
+        return <div ref="container" className="ecota-container animated slideInLeft">
+            <NavBar
+                onLeftClick={() => {
+                    this.container.className = "ecota-container animated slideOutRight";
+                    setTimeout(() => {
+                        this.props.setPage(PAGEMAP.LIST);
+                    }, 200);
+                }}
                 onRightClick={() => null} />
             <Tabs swipeable={false}
                 tabs={this.state.tabs}
@@ -40,11 +51,16 @@ class Index extends React.Component {
                         header desc
                     </div> */}
                     <Carousel>
-                        <div className="content-chart">c1</div>
-                        <div className="content-chart">c2</div>
+                        <div className="content-chart" style={{ boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)" }}>
+                        </div>
+                        <div className="content-chart" style={{ boxShadow: "#ccc -1px -1px 1px 1px inset" }}>c2</div>
                     </Carousel>
                     <Carousel>
-                        <div className="content-chart">c1</div>
+                        <div className="content-chart">
+                            <i style={{
+                                fontSize: 26, position: "absolute", right: "0.2rem", bottom: "0.2rem", zIndex: 99,
+                            }} className="iconfont icon-fangda"></i>
+                        </div>
                         <div className="content-chart">c2</div>
                     </Carousel>
                     <Carousel>
@@ -61,7 +77,7 @@ export default Index;
 
 const NavBar = ({ onLeftClick, onRightClick }) => <div className="info-navbar">
     <div onClick={onLeftClick}>
-        <Icon type="left"></Icon>
+        <i style={{ fontSize: 20 }} className="iconfont icon-fanhui"></i>
     </div>
     <div onClick={onRightClick}>
         <Icon type="ellipsis"></Icon>

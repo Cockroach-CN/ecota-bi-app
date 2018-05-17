@@ -2,6 +2,7 @@ import React from "react";
 import { PAGEMAP } from "../../commons/common.js";
 import "./Style.less";
 
+
 const settings = window.settings;
 const groups = settings.groups;
 
