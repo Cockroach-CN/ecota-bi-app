@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDom from "react-dom"
 import {
     Tabs,
     Icon,
@@ -6,94 +7,9 @@ import {
 } from "antd-mobile";
 import echarts from "echarts";
 import { PAGEMAP } from "../../commons/common.js";
-
-const option = {
-    backgroundColor: "#000",
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line'
-    }]
-}
-
-const option2 = {
-    backgroundColor: '#000',
-
-    title: {
-        text: 'Customized Pie',
-        left: 'center',
-        top: 20,
-        textStyle: {
-            color: '#ccc'
-        }
-    },
-
-    tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-
-    visualMap: {
-        show: false,
-        min: 80,
-        max: 600,
-        inRange: {
-            colorLightness: [0, 1]
-        }
-    },
-    series: [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '50%'],
-            data: [
-                { value: 335, name: '直接访问' },
-                { value: 310, name: '邮件营销' },
-                { value: 274, name: '联盟广告' },
-                { value: 235, name: '视频广告' },
-                { value: 400, name: '搜索引擎' }
-            ].sort(function (a, b) { return a.value - b.value; }),
-            roseType: 'radius',
-            label: {
-                normal: {
-                    textStyle: {
-                        color: 'rgba(255, 255, 255, 0.3)'
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    lineStyle: {
-                        color: 'rgba(255, 255, 255, 0.3)'
-                    },
-                    smooth: 0.2,
-                    length: 10,
-                    length2: 20
-                }
-            },
-            itemStyle: {
-                normal: {
-                    color: '#c23531',
-                    shadowBlur: 200,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            },
-
-            animationType: 'scale',
-            animationEasing: 'elasticOut',
-            animationDelay: function (idx) {
-                return Math.random() * 200;
-            }
-        }
-    ]
-};
+import { NavBar } from "../elements/Common.jsx";
+import { option1, option2, option3, option4, option5, option6 } from "./options.js";
+import "./Style.less";
 
 const settings = window.settings;
 const groups = settings.groups;
@@ -104,23 +20,13 @@ class Index extends React.Component {
         const { gkey, ckey } = props.options;
         const tabs = (groups.filter(g => g.key === gkey)[0] || { charts: [] }).charts
             .map((chart, i) => ({ key: String(chart.key), title: chart.name }));
-        this.state = {
-            tabs: tabs,
-        }
+        this.tabs = tabs;
         this.container = null;
     }
 
     componentDidMount() {
-        const width = document.getElementById("tab-content").clientWidth;
         this.container = this.refs.container;
-        const aa = document.getElementById("chart1");
-        aa.style.width = width - 10 + "px";
-        const chart1 = echarts.init(aa);
-        chart1.setOption(option2);
-        const bb = document.getElementById("chart2");
-        bb.style.width = width - 10 + "px";
-        const chart2 = echarts.init(bb);
-        chart2.setOption(option);
+
     }
 
     render() {
@@ -130,37 +36,18 @@ class Index extends React.Component {
                 onLeftClick={() => this.props.setPage(PAGEMAP.LIST, this.container)}
                 onRightClick={() => null} />
             <Tabs swipeable={false}
-                tabs={this.state.tabs}
+                tabs={this.tabs}
                 tabBarPosition="bottom"
                 page={String(this.props.options.ckey)}
                 renderTab={tab => <div>{tab.title}</div>}
                 onChange={tab => this.props.setOptions({ ckey: tab.key })}>
-                <div id="tab-content" className="info-tab-content">
-                    {/* <div className="content-header" style={{ height: 50 }}>
+                <div ref="tabContent" className="info-tab-content">
+                    <div className="content-header">
                         header desc
-                        <br />
-                        header desc
-                        <br />
-                        header desc
-                    </div> */}
-                    <Carousel style={styleTabContent}>
-                        <div className="content-chart"></div>
-                        <div className="content-chart">c2</div>
-                    </Carousel>
-                    <Carousel style={styleTabContent}>
-                        <div className="content-chart">
-                            <div id="chart1" style={{ height: "100%" }}></div>
-                            <i onClick={() => this.props.setPage(PAGEMAP.DETAIL)}
-                                style={{
-                                    fontSize: 26, position: "absolute", right: "0.2rem", bottom: "0.2rem", zIndex: 99,
-                                }} className="iconfont icon-fangda"></i>
-                        </div>
-                        <div id="chart2" className="content-chart">c2</div>
-                    </Carousel>
-                    <Carousel style={styleTabContent}>
-                        <div className="content-chart">c1</div>
-                        <div className="content-chart">c2</div>
-                    </Carousel>
+                    </div>
+                    <Panel options={[option1, option6, option3]}></Panel>
+                    <Panel options={[option4]} onLarge={() => this.props.setPage(PAGEMAP.DETAIL)}></Panel>
+                    {/* <Panel options={[option5, option6]}></Panel> */}
                 </div>
             </Tabs>
         </div>
@@ -169,17 +56,52 @@ class Index extends React.Component {
 
 export default Index;
 
-const NavBar = ({ onLeftClick, onRightClick }) => <div className="info-navbar">
-    <div onClick={onLeftClick}>
-        <i style={{ fontSize: 20 }} className="iconfont icon-fanhui"></i>
-    </div>
-    <div onClick={onRightClick}>
-        <Icon type="ellipsis"></Icon>
-    </div>
-</div>
+
+class Panel extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.key = Math.random();
+        this.options = props.options || [];
+        this.onLarge = props.onLarge || undefined
+    }
+
+    componentDidMount() {
+        const { key, options } = this;
+        const width = document.body.clientWidth;
+        options.map((o, i) => {
+            const dom = document.getElementById(`chart-${i}-${key}`);
+            dom.style.width = width - 30 + "px";
+            const chart = echarts.init(dom);
+            chart.setOption(o);
+        });
+    }
+
+    render() {
+        const { key, options, onLarge } = this;
+        return (
+            <Carousel style={styleTabContent} dots={options.length > 1 ? true : false}>
+                {options.map((o, i) =>
+                    <div className="content-chart">
+                        <div id={`chart-${i}-${key}`}></div>
+                        <i style={styleFangda} className="iconfont icon-fangda" onClick={onLarge} />
+                    </div>
+                )}
+            </Carousel>
+        );
+    }
+}
 
 const styleTabContent = {
     margin: "0.05rem",
     width: "calc(100 % - 0.1rem)",
     boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)",
+}
+
+const styleFangda = {
+    fontSize: 26,
+    position: "absolute",
+    right: "0.1rem",
+    bottom: "0.1rem",
+    zIndex: 99,
 }

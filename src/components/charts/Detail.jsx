@@ -4,7 +4,8 @@ import {
     Icon,
     Carousel,
 } from "antd-mobile";
-import { PAGEMAP } from "../../commons/common.js"
+import { NavBar } from "../elements/Common.jsx";
+import { PAGEMAP } from "../../commons/common.js";
 
 class Index extends React.Component {
 
@@ -26,13 +27,3 @@ class Index extends React.Component {
     }
 }
 export default Index;
-
-
-const NavBar = ({ onLeftClick, onRightClick }) => <div className="info-navbar">
-    <div onClick={onLeftClick}>
-        <i style={{ fontSize: 20 }} className="iconfont icon-fanhui"></i>
-    </div>
-    <div onClick={onRightClick}>
-        <Icon type="ellipsis"></Icon>
-    </div>
-</div>
