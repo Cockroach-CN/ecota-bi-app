@@ -19,7 +19,8 @@ class App extends React.Component {
             page: PAGEMAP.LIST,
             options: {
                 gkey: groups[0].key,
-                ckey: groups[0].charts[0].key,
+                tkey: groups[0].tabs[0].key,
+                ckey: "",
             },
         }
         this.setPage = this.setPage.bind(this);

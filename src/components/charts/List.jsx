@@ -14,13 +14,13 @@ class Index extends React.Component {
             {groups.map(group => <div key={group.key} className="chart-group-item">
                 <p>{group.name}</p>
                 <div>
-                    {group.charts.map(chart => <div key={chart.key}
+                    {group.tabs.map(tab => <div key={tab.key}
                         onClick={() => {
                             this.props.setPage(PAGEMAP.INFO);
-                            this.props.setOptions({ gkey: group.key, ckey: chart.key });
+                            this.props.setOptions({ gkey: group.key, tkey: tab.key });
                         }}>
-                        <img src={require(`../../${chart.imageUrl}`)} alt="icon" />
-                        <p>{chart.name}</p>
+                        <img src={require(`../../${tab.imageUrl}`)} alt="icon" />
+                        <p>{tab.name}</p>
                     </div>)}
                 </div>
             </div>)}

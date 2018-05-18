@@ -6,49 +6,48 @@ import {
     Carousel,
 } from "antd-mobile";
 import echarts from "echarts";
-import { PAGEMAP } from "../../commons/common.js";
 import { NavBar } from "../elements/Common.jsx";
-import { option1, option2, option3, option4, option5, option6 } from "./options.js";
+import { PAGEMAP } from "../../commons/common.js";
+import { getTabData } from "../../services/service.js";
 import "./Style.less";
 
-const settings = window.settings;
-const groups = settings.groups;
+const { groups } = window.settings;
 class Index extends React.Component {
 
     constructor(props) {
         super(props);
-        const { gkey, ckey } = props.options;
-        const tabs = (groups.filter(g => g.key === gkey)[0] || { charts: [] }).charts
-            .map((chart, i) => ({ key: String(chart.key), title: chart.name }));
-        this.tabs = tabs;
+        const { gkey, tkey } = props.options;
+        const settingTabs = (groups.filter(g => g.key === gkey)[0] || { tabs: [] }).tabs;
+        const tabs = settingTabs.map((tab, i) => ({ key: String(tab.key), title: tab.name }));
         this.container = null;
+        this.tabs = tabs || [];
+        this.settingTabs = settingTabs;
     }
 
     componentDidMount() {
         this.container = this.refs.container;
-
     }
 
     render() {
 
+        const { gkey } = this.props;
+        const { tabs, settingTabs, container } = this;
         return <div ref="container">
             <NavBar
-                onLeftClick={() => this.props.setPage(PAGEMAP.LIST, this.container)}
+                onLeftClick={() => this.props.setPage(PAGEMAP.LIST, container)}
                 onRightClick={() => null} />
             <Tabs swipeable={false}
-                tabs={this.tabs}
+                tabs={tabs}
                 tabBarPosition="bottom"
-                page={String(this.props.options.ckey)}
+                page={String(this.props.options.tkey)}
                 renderTab={tab => <div>{tab.title}</div>}
-                onChange={tab => this.props.setOptions({ ckey: tab.key })}>
-                <div ref="tabContent" className="info-tab-content">
-                    <div className="content-header">
-                        header desc
-                    </div>
-                    <Panel options={[option1, option6, option3]}></Panel>
-                    <Panel options={[option4]} onLarge={() => this.props.setPage(PAGEMAP.DETAIL)}></Panel>
-                    {/* <Panel options={[option5, option6]}></Panel> */}
-                </div>
+                onChange={tab => this.props.setOptions({ tkey: tab.key })}>
+                {settingTabs.map(tab =>
+                    <Panel key={tab.key} tab={tab} onLarge={(key) => {
+                        this.props.setOptions({ ckey: key });
+                        this.props.setPage(PAGEMAP.DETAIL);
+                    }} />
+                )}
             </Tabs>
         </div>
     }
@@ -61,34 +60,46 @@ class Panel extends React.Component {
 
     constructor(props) {
         super(props);
-        this.key = Math.random();
-        this.options = props.options || [];
-        this.onLarge = props.onLarge || undefined
+        const { charts } = props.tab || [];
+        this.state = {
+            unionkey: Math.random(),
+            datas: charts,
+        }
     }
 
     componentDidMount() {
-        const { key, options } = this;
+        const { tab } = this.props;
+        const { unionkey } = this.state;
         const width = document.body.clientWidth;
-        options.map((o, i) => {
-            const dom = document.getElementById(`chart-${i}-${key}`);
+        const datas = getTabData(tab, {});
+        datas.map((data, di) => data.options.map((option, oi) => {
+            const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
             dom.style.width = width - 30 + "px";
             const chart = echarts.init(dom);
-            chart.setOption(o);
-        });
+            chart.setOption(option);
+        }));
     }
 
     render() {
-        const { key, options, onLarge } = this;
+        const { tab, onLarge } = this.props;
+        const { datas, unionkey } = this.state;
         return (
-            <Carousel style={styleTabContent} dots={options.length > 1 ? true : false}>
-                {options.map((o, i) =>
-                    <div className="content-chart">
-                        <div id={`chart-${i}-${key}`}></div>
-                        <i style={styleFangda} className="iconfont icon-fangda" onClick={onLarge} />
-                    </div>
+            <div className="info-tab-content">
+                <div className="content-header">{tab.header}</div>
+                {datas.map((data, di) =>
+                    <Carousel key={data.key} style={styleTabContent} dots={(data.keys || []).length > 1 ? true : false}>
+                        {(data.keys || []).map((o, ci) =>
+                            <div key={ci} className="content-chart">
+                                <div id={`chart-${di}-${ci}-${unionkey}`}></div>
+                                {ci === 0 &&
+                                    <i style={styleFangda} className="iconfont icon-fangda" onClick={() => onLarge((data.keys || [])[ci])} />}
+                            </div>
+                        )}
+                    </Carousel>
                 )}
-            </Carousel>
+            </div>
         );
+
     }
 }
 
