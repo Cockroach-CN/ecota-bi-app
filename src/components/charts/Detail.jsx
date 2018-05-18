@@ -10,20 +10,24 @@ class Index extends React.Component {
     }
 
     componentDidMount() {
+        setTimeout(() => {
+            const container = document.getElementById("container");
+            container.className = "";
+        }, 300);
         const data = getChartData(this.props.options.ckey);
         const width = document.body.clientWidth;
-        const dom = document.getElementById("container");
+        const dom = document.getElementById("chart");
         dom.style.width = width + "px";
         const chart = echarts.init(dom);
         chart.setOption(data);
     }
 
     render() {
-        return <div>
+        return <div id="container">
             <NavBar
-                onLeftClick={() => this.props.setPage(PAGEMAP.INFO, this.container)}
+                onLeftClick={() => this.props.setPage(PAGEMAP.INFO, true)}
                 onRightClick={() => null} />
-            <div id="container" style={styleContent} className="info-tab-content"></div>
+            <div id="chart" style={styleContent} className="info-tab-content"></div>
         </div>
     }
 }

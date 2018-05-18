@@ -19,22 +19,23 @@ class Index extends React.Component {
         const { gkey, tkey } = props.options;
         const settingTabs = (groups.filter(g => g.key === gkey)[0] || { tabs: [] }).tabs;
         const tabs = settingTabs.map((tab, i) => ({ key: String(tab.key), title: tab.name }));
-        this.container = null;
         this.tabs = tabs || [];
         this.settingTabs = settingTabs;
     }
 
     componentDidMount() {
-        this.container = this.refs.container;
+        setTimeout(() => {
+            const container = document.getElementById("container");
+            container.className = "";
+        }, 300);
     }
 
     render() {
-
         const { gkey } = this.props;
-        const { tabs, settingTabs, container } = this;
-        return <div ref="container">
+        const { tabs, settingTabs } = this;
+        return <div id="container" >
             <NavBar
-                onLeftClick={() => this.props.setPage(PAGEMAP.LIST, container)}
+                onLeftClick={() => this.props.setPage(PAGEMAP.LIST, true)}
                 onRightClick={() => null} />
             <Tabs swipeable={false}
                 tabs={tabs}

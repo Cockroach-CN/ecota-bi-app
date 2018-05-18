@@ -51,15 +51,21 @@ class App extends React.Component {
         return component;
     }
 
-    setPage(page, container) {
+    setPage(page, back) {
+
         let timeout = 0;
-        if (container) {
+        if (back) {
             timeout = 150;
-            container.className = "animated slideOutRight";
+            var container = document.getElementById("container");
+            if (container) { container.className = "animated slideOutRight" };
         }
         setTimeout(() => {
             this.state.page = page;
             this.setState(this.state);
+            if (!back) {
+                var container = document.getElementById("container");
+                if (container) { container.className = "animated slideInLeft" };
+            }
         }, timeout);
     }
 
