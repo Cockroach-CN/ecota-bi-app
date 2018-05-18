@@ -71,3 +71,28 @@ html, body, #react-app-root {
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 }
+
+a.am-button-ghost::before{
+    border-radius: 1px !important;
+}
+a.am-button-ghost,
+a.am-button-primary {
+    border-radius: 1px;
+}
+
+div.am-tag-active,
+div.am-tag-normal {
+    &::before {
+        border-radius: 1px !important;
+    }
+}
+
+div.am-segment {
+    border-radius: 1px;
+    div.am-segment-item:first-child {
+        border-radius: 1px 0 0 1px;
+    }
+    div.am-segment-item:last-child {
+        border-radius: 0 1px 1px 0;
+    }
+}

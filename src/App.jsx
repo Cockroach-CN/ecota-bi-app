@@ -1,30 +1,43 @@
 import React from "react";
 import ReactDom from "react-dom";
+import Main from "./components/charts/Main.jsx";
 import List from "./components/charts/List.jsx";
 import Info from "./components/charts/Info.jsx";
-import Detail from "./components/charts/Detail.jsx";
 import 'animate.css';
 import "./App.less";
 import "./fonts/iconfont.css";
 import { PAGEMAP } from "./commons/common.js";
 import 'antd-mobile/dist/antd-mobile.css';
 
-const settings = window.settings;
-const groups = settings.groups;
+const { groups, filters } = window.settings;
+
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            page: PAGEMAP.LIST,
+            page: PAGEMAP.MAIN,
             options: {
                 gkey: groups[0].key,
                 tkey: groups[0].tabs[0].key,
                 ckey: "",
+                opts: {},
             },
         }
         this.setPage = this.setPage.bind(this);
         this.setOptions = this.setOptions.bind(this);
+    }
+
+    componentDidMount() {
+        (filters || []).map(f => {
+            this.state.options.opts[f.key] = {
+                key: f.key,
+                type: "date",
+                whole: true,
+                value: f.type === "btn" ? [] : "",
+            }
+        });
+        this.setState(this.state);
     }
 
     render() {
@@ -41,11 +54,11 @@ class App extends React.Component {
             case PAGEMAP.INFO:
                 component = <Info {...pageProps} />
                 break;
-            case PAGEMAP.DETAIL:
-                component = <Detail {...pageProps} />
+            case PAGEMAP.MAIN:
+                component = <Main {...pageProps} />
                 break;
             default:
-                component = <List {...pageProps} />
+                component = <Main {...pageProps} />
                 break;
         }
         return component;

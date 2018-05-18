@@ -1,3 +1,12 @@
+
+import { CSSProperties } from "react";
+
+const classList = (...classNames) => {
+    if (classNames && classNames.length > 0) {
+        return classNames.filter((c) => !!c).join(" ") || undefined;
+    }
+}
+
 window.merge = (arg1, arg2) => {
     if (arg1 === null || arg1 === undefined || arg2 === null || arg2 === undefined) {
         throw Error("Cannot convert undefined or null to object");
@@ -14,11 +23,12 @@ window.merge = (arg1, arg2) => {
 }
 
 const PAGEMAP = {
+    MAIN: "main",
     LIST: "list",
-    INFO: "info",
-    DETAIL: "detail"
+    INFO: "info"
 }
 
 export {
-    PAGEMAP
+    PAGEMAP,
+    classList,
 }

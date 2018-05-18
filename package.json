@@ -19,6 +19,7 @@
     "es6-promise": "^4.2.4",
     "file-system": "^2.2.2",
     "jquery": "^3.3.1",
+    "moment": "^2.22.1",
     "qsocks": "^3.2.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
