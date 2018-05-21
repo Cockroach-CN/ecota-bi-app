@@ -13,7 +13,7 @@ const {
     groups
 } = window.settings;
 
-const Fnc = {
+const Fn = {
     [keys.DATA_KEY_1]: (options) => option1,
     [keys.DATA_KEY_2]: (options) => option2,
     [keys.DATA_KEY_3]: (options) => option3,
@@ -23,18 +23,23 @@ const Fnc = {
 }
 
 const getTabData = (tab, opts) => {
+    var aa = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "list");
+    console.log(aa[0].value);
+
     const datas = JSON.parse(JSON.stringify(tab.charts || []));
     datas.map((data, i) => {
         datas[i].options = [];
         data.keys.map((key, j) => {
-            datas[i].options[j] = Fnc[key](opts);
+            datas[i].options[j] = Fn[key](opts);
         })
     });
     return datas;
 }
 
 const getChartData = (key, opts) => {
-    return Fnc[key](opts);
+    var aa = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "info");
+    console.log(aa[0].value);
+    return Fn[key](opts);
 }
 
 export {

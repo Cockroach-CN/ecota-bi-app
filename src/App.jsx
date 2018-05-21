@@ -34,6 +34,7 @@ class App extends React.Component {
                 key: f.key,
                 type: "date",
                 whole: true,
+                class: f.class,
                 value: f.type === "btn" ? [] : "",
             }
         });
@@ -82,9 +83,9 @@ class App extends React.Component {
         }, timeout);
     }
 
-    setOptions(options) {
+    setOptions(options, back) {
         this.state.options = window.merge(this.state.options, options);
-        this.setState(this.state);
+        this.setState(this.state, () => back && back());
     }
 }
 

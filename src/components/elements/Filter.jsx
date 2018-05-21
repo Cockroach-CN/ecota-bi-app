@@ -13,24 +13,26 @@ class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            options: {},
             bak: {},
+            options: {},
+            random: undefined,
         }
-
     }
 
     componentDidMount() {
-        this.state.options = o2o(this.props.opts);
-        this.state.bak = o2o(this.props.opts);
-        this.setState(this.state);
+        this.init();
     }
 
     componentWillReceiveProps(nextProps) {
-        if (JSON.stringify(nextProps.opts) !== JSON.stringify(this.props.opts)) {
-            this.state.options = o2o(nextProps.opts);
-            this.state.bak = o2o(nextProps.opts);
-            this.setState(this.state);
+        if (nextProps.random !== this.props.random) {
+            this.init();
         }
+    }
+
+    init() {
+        this.state.options = o2o(this.props.opts);
+        this.state.bak = o2o(this.props.opts);
+        this.setState(this.state);
     }
 
     render() {
@@ -137,10 +139,6 @@ class Index extends React.Component {
             </WingBlank>
             <WhiteSpace size="sm" />
         </Modal>
-    }
-
-    convertObj(obj) {
-        return JSON.parse(JSON.stringify(obj));
     }
 
 }

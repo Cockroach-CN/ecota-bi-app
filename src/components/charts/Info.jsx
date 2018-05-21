@@ -9,6 +9,7 @@ class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            random: 0,
             showModal: false,
         }
     }
@@ -18,7 +19,12 @@ class Index extends React.Component {
             const container = document.getElementById("container");
             container.className = "";
         }, 300);
-        const data = getChartData(this.props.options.ckey);
+        this.getData();
+    }
+
+    getData() {
+        const { ckey, opts } = this.props.options
+        const data = getChartData(ckey, opts);
         const width = document.body.clientWidth;
         const dom = document.getElementById("chart");
         dom.style.width = width + "px";
@@ -27,19 +33,20 @@ class Index extends React.Component {
     }
 
     render() {
-        const { showModal } = this.state;
+        const { random, showModal } = this.state;
         return <div id="container">
             <NavBar
                 onLeftClick={() => this.props.setPage(PAGEMAP.LIST, true)}
                 onRightClick={() => this.setState({ showModal: true })} />
             <div id="chart" style={styleContent} className="info-tab-content"></div>
             <Filter type="info"
+                random={random}
                 visable={showModal}
                 opts={this.props.options.opts}
-                onOk={(opts) => {
-                    this.setState({ showModal: false });
-                    this.props.setOptions({ opts });
-                }}
+                onOk={(opts) => this.props.setOptions({ opts }, () => {
+                    this.getData();
+                    this.setState({ random: Math.random(), showModal: false });
+                })}
                 onClose={() => this.setState({ showModal: false })} />
         </div>
     }

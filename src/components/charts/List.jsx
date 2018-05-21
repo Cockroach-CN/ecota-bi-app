@@ -21,6 +21,7 @@ class Index extends React.Component {
         const settingTabs = (groups.filter(g => g.key === gkey)[0] || { tabs: [] }).tabs;
         const tabs = settingTabs.map((tab, i) => ({ key: String(tab.key), title: tab.name }));
         this.state = {
+            random: 0,
             showModal: false,
             tabs: tabs || [],
             settingTabs: settingTabs || []
@@ -35,32 +36,36 @@ class Index extends React.Component {
     }
 
     render() {
-        const { gkey } = this.props;
-        const { tabs, settingTabs } = this.state;
+        const { gkey, options, setPage, setOptions } = this.props;
+        const { tabs, random, settingTabs } = this.state;
         const { showModal } = this.state;
         return <div id="container" >
             <NavBar
-                onLeftClick={() => this.props.setPage(PAGEMAP.MAIN, true)}
+                onLeftClick={() => setPage(PAGEMAP.MAIN, true)}
                 onRightClick={() => this.setState({ showModal: true })} />
             <Tabs swipeable={false}
                 tabs={tabs}
                 tabBarPosition="bottom"
-                page={String(this.props.options.tkey)}
+                page={String(options.tkey)}
                 renderTab={tab => <div>{tab.title}</div>}
-                onChange={tab => this.props.setOptions({ tkey: tab.key })}>
+                onChange={tab => setOptions({ tkey: tab.key })}>
                 {settingTabs.map(tab =>
-                    <Panel key={tab.key} tab={tab} onLarge={(key) => {
-                        this.props.setOptions({ ckey: key });
-                        this.props.setPage(PAGEMAP.INFO);
-                    }} />
+                    <Panel key={tab.key}
+                        tab={tab}
+                        random={random}
+                        opts={options.opts}
+                        onLarge={(key) => {
+                            setOptions({ ckey: key });
+                            setPage(PAGEMAP.INFO);
+                        }} />
                 )}
             </Tabs>
             <Filter type="list"
                 visable={showModal}
-                opts={this.props.options.opts}
+                opts={options.opts}
+                random={random}
                 onOk={(opts) => {
-                    this.setState({ showModal: false });
-                    this.props.setOptions({ opts });
+                    setOptions({ opts }, () => this.setState({ showModal: false, random: Math.random() }));
                 }}
                 onClose={() => this.setState({ showModal: false })} />
         </div>
@@ -82,10 +87,20 @@ class Panel extends React.Component {
     }
 
     componentDidMount() {
-        const { tab } = this.props;
+        this.getList();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.random !== this.props.random) {
+            this.getList();
+        }
+    }
+
+    getList() {
+        const { tab, opts } = this.props;
         const { unionkey } = this.state;
         const width = document.body.clientWidth;
-        const datas = getTabData(tab, {});
+        const datas = getTabData(tab, opts);
         datas.map((data, di) => data.options.map((option, oi) => {
             const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
             dom.style.width = width - 30 + "px";
