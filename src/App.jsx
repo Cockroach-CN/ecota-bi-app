@@ -1,13 +1,14 @@
+import 'animate.css';
+import 'babel-polyfill';
+import "./App.less";
+import "./fonts/iconfont.css";
+import 'antd-mobile/dist/antd-mobile.css';
 import React from "react";
 import ReactDom from "react-dom";
 import Main from "./components/charts/Main.jsx";
 import List from "./components/charts/List.jsx";
 import Info from "./components/charts/Info.jsx";
-import 'animate.css';
-import "./App.less";
-import "./fonts/iconfont.css";
 import { PAGEMAP } from "./commons/common.js";
-import 'antd-mobile/dist/antd-mobile.css';
 
 const { groups, filters } = window.settings;
 

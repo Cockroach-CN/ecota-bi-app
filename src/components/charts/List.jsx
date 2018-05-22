@@ -47,6 +47,7 @@ class Index extends React.Component {
                 tabs={tabs}
                 tabBarPosition="bottom"
                 page={String(options.tkey)}
+                prerenderingSiblingsNumber={0}
                 renderTab={tab => <div>{tab.title}</div>}
                 onChange={tab => setOptions({ tkey: tab.key })}>
                 {settingTabs.map(tab =>

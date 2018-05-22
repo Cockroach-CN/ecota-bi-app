@@ -143,7 +143,7 @@ class Index extends React.Component {
 
 }
 
-const o2o = (obj) => JSON.parse(JSON.stringify(obj));
+const o2o = (obj) => window.merge({}, obj);
 
 const styleTagRight = {
     float: "right",
