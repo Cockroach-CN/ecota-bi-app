@@ -3,11 +3,11 @@ var fs = require("fs");
 var path = require("path");
 var basepath = path.resolve("./static");
 
+var process = require("process");
+
 var server = http.createServer(function (req, res) {
     var url = req.url;
-    console.log(url);
     var file = basepath + url;
-    console.log(file);
     fs.readFile(file, function (err, data) {
         /*
             一参为文件路径
@@ -25,7 +25,7 @@ var server = http.createServer(function (req, res) {
             res.writeHeader(200, {
                 'content-type': 'text/html;charset="utf-8"'
             });
-            res.write(data);//将index.html显示在客户端
+            res.write(data); //将index.html显示在客户端
             res.end();
 
         }
@@ -33,4 +33,3 @@ var server = http.createServer(function (req, res) {
     });
 
 }).listen(8888);
-

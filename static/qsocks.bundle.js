@@ -1,5 +1,47 @@
-(function (f) { if (typeof exports === "object" && typeof module !== "undefined") { module.exports = f() } else if (typeof define === "function" && define.amd) { define([], f) } else { var g; if (typeof window !== "undefined") { g = window } else if (typeof global !== "undefined") { g = global } else if (typeof self !== "undefined") { g = self } else { g = this } g.qsocks = f() } })(function () {
-    var define, module, exports; return (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { var a = typeof require == "function" && require; if (!u && a) return a(o, !0); if (i) return i(o, !0); var f = new Error("Cannot find module '" + o + "'"); throw f.code = "MODULE_NOT_FOUND", f } var l = n[o] = { exports: {} }; t[o][0].call(l.exports, function (e) { var n = t[o][1][e]; return s(n ? n : e) }, l, l.exports, e, t, n, r) } return n[o].exports } var i = typeof require == "function" && require; for (var o = 0; o < r.length; o++)s(r[o]); return s })({
+(function (f) {
+    if (typeof exports === "object" && typeof module !== "undefined") {
+        module.exports = f()
+    } else if (typeof define === "function" && define.amd) {
+        define([], f)
+    } else {
+        var g;
+        if (typeof window !== "undefined") {
+            g = window
+        } else if (typeof global !== "undefined") {
+            g = global
+        } else if (typeof self !== "undefined") {
+            g = self
+        } else {
+            g = this
+        }
+        g.qsocks = f()
+    }
+})(function () {
+    var define, module, exports;
+    return (function e(t, n, r) {
+        function s(o, u) {
+            if (!n[o]) {
+                if (!t[o]) {
+                    var a = typeof require == "function" && require;
+                    if (!u && a) return a(o, !0);
+                    if (i) return i(o, !0);
+                    var f = new Error("Cannot find module '" + o + "'");
+                    throw f.code = "MODULE_NOT_FOUND", f
+                }
+                var l = n[o] = {
+                    exports: {}
+                };
+                t[o][0].call(l.exports, function (e) {
+                    var n = t[o][1][e];
+                    return s(n ? n : e)
+                }, l, l.exports, e, t, n, r)
+            }
+            return n[o].exports
+        }
+        var i = typeof require == "function" && require;
+        for (var o = 0; o < r.length; o++) s(r[o]);
+        return s
+    })({
         1: [function (require, module, exports) {
             (function (process, global) {
                 var doc = require('./lib/doc');
@@ -14,8 +56,7 @@
                 var Promise = require('promise');
 
                 var VERSION = '3.2.1';
-                var IS_NODE = true;
-                // var IS_NODE = typeof process !== "undefined" && Object.prototype.toString.call(global.process) === "[object process]";
+                var IS_NODE = typeof process !== "undefined" && Object.prototype.toString.call(global.process) === "[object process]";
 
                 // ws 1.0.1 breaks in browser. This will fallback to browser versions correctly
                 var WebSocket = global.WebSocket || global.MozWebSocket;
@@ -23,8 +64,8 @@
                 if (IS_NODE) {
                     try {
                         WebSocket = require('ws');
-                    } catch (e) { }
-                };
+                    } catch (e) {}
+                }
 
                 if (IS_NODE) {
                     if (!Object.prototype.hasOwnProperty("hasOwnPropertyCI")) {
@@ -342,7 +383,20 @@
                 };
                 module.exports = qsocks;
             }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-        }, { "./lib/doc": 2, "./lib/field": 3, "./lib/genericBookmark": 4, "./lib/genericDimension": 5, "./lib/genericMeasure": 6, "./lib/genericObject": 7, "./lib/genericVariable": 8, "./lib/global": 9, "_process": 15, "promise": 16, "ws": 12 }], 2: [function (require, module, exports) {
+        }, {
+            "./lib/doc": 2,
+            "./lib/field": 3,
+            "./lib/genericBookmark": 4,
+            "./lib/genericDimension": 5,
+            "./lib/genericMeasure": 6,
+            "./lib/genericObject": 7,
+            "./lib/genericVariable": 8,
+            "./lib/global": 9,
+            "_process": 14,
+            "promise": 15,
+            "ws": 12
+        }],
+        2: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -916,7 +970,11 @@
                 });
             };
             module.exports = Doc;
-        }, { "events": 13, "util": 25 }], 3: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        3: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -1009,7 +1067,11 @@
                 return this.connection.ask(this.handle, 'SetNxProperties', arguments);
             };
             module.exports = Field;
-        }, { "events": 13, "util": 25 }], 4: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        4: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -1053,7 +1115,11 @@
                 return this.connection.ask(this.handle, 'UnPublish', arguments);
             };
             module.exports = GenericBookmark;
-        }, { "events": 13, "util": 25 }], 5: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        5: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -1102,7 +1168,11 @@
                 return this.connection.ask(this.handle, 'UnPublish', arguments);
             };
             module.exports = GenericDimension;
-        }, { "events": 13, "util": 25 }], 6: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        6: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -1151,7 +1221,11 @@
                 return this.connection.ask(this.handle, 'UnPublish', arguments);
             };
             module.exports = GenericMeasure;
-        }, { "events": 13, "util": 25 }], 7: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        7: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -1402,7 +1476,11 @@
                 });
             };
             module.exports = GenericObject;
-        }, { "events": 13, "util": 25 }], 8: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        8: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -1472,7 +1550,11 @@
                 return new Error('This method was deprecated in 2.1. Replaced with GetProperties');
             };
             module.exports = GenericVariable;
-        }, { "events": 13, "util": 25 }], 9: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        9: [function (require, module, exports) {
             var EventEmitter = require('events').EventEmitter;
             var util = require('util');
 
@@ -1718,7 +1800,11 @@
             };
 
             module.exports = Global;
-        }, { "events": 13, "util": 25 }], 10: [function (require, module, exports) {
+        }, {
+            "events": 13,
+            "util": 25
+        }],
+        10: [function (require, module, exports) {
             "use strict";
 
             // rawAsap provides everything we need except exception management.
@@ -1745,6 +1831,7 @@
              * arguments.
              */
             module.exports = asap;
+
             function asap(task) {
                 var rawTask;
                 if (freeTasks.length) {
@@ -1786,7 +1873,10 @@
                 }
             };
 
-        }, { "./raw": 11 }], 11: [function (require, module, exports) {
+        }, {
+            "./raw": 11
+        }],
+        11: [function (require, module, exports) {
             (function (global) {
                 "use strict";
 
@@ -1801,6 +1891,7 @@
                 // either ensure that no exceptions are thrown from your task, or to manually
                 // call `rawAsap.requestFlush` if an exception is thrown.
                 module.exports = rawAsap;
+
                 function rawAsap(task) {
                     if (!queue.length) {
                         requestFlush();
@@ -1866,9 +1957,12 @@
 
                 // Safari 6 and 6.1 for desktop, iPad, and iPhone are the only browsers that
                 // have WebKitMutationObserver but not un-prefixed MutationObserver.
-                // Must use `global` instead of `window` to work in both frames and web
+                // Must use `global` or `self` instead of `window` to work in both frames and web
                 // workers. `global` is a provision of Browserify, Mr, Mrs, or Mop.
-                var BrowserMutationObserver = global.MutationObserver || global.WebKitMutationObserver;
+
+                /* globals self */
+                var scope = typeof global !== "undefined" ? global : self;
+                var BrowserMutationObserver = scope.MutationObserver || scope.WebKitMutationObserver;
 
                 // MutationObservers are desirable because they have high priority and work
                 // reliably everywhere they are implemented.
@@ -1928,7 +2022,9 @@
                     var toggle = 1;
                     var observer = new BrowserMutationObserver(callback);
                     var node = document.createTextNode("");
-                    observer.observe(node, { characterData: true });
+                    observer.observe(node, {
+                        characterData: true
+                    });
                     return function requestCall() {
                         toggle = -toggle;
                         node.data = toggle;
@@ -2010,9 +2106,11 @@
                 // https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
 
             }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-        }, {}], 12: [function (require, module, exports) {
+        }, {}],
+        12: [function (require, module, exports) {
 
-        }, {}], 13: [function (require, module, exports) {
+        }, {}],
+        13: [function (require, module, exports) {
             // Copyright Joyent, Inc. and other Node contributors.
             //
             // Permission is hereby granted, free of charge, to any person obtaining a
@@ -2094,7 +2192,7 @@
                         case 3:
                             handler.call(this, arguments[1], arguments[2]);
                             break;
-                        // slower
+                            // slower
                         default:
                             len = arguments.length;
                             args = new Array(len - 1);
@@ -2131,7 +2229,7 @@
                 if (this._events.newListener)
                     this.emit('newListener', type,
                         isFunction(listener.listener) ?
-                            listener.listener : listener);
+                        listener.listener : listener);
 
                 if (!this._events[type])
                     // Optimize the case of one listener. Don't need the extra array object.
@@ -2315,32 +2413,8 @@
                 return arg === void 0;
             }
 
-        }, {}], 14: [function (require, module, exports) {
-            if (typeof Object.create === 'function') {
-                // implementation from standard node.js 'util' module
-                module.exports = function inherits(ctor, superCtor) {
-                    ctor.super_ = superCtor
-                    ctor.prototype = Object.create(superCtor.prototype, {
-                        constructor: {
-                            value: ctor,
-                            enumerable: false,
-                            writable: true,
-                            configurable: true
-                        }
-                    });
-                };
-            } else {
-                // old school shim for old browsers
-                module.exports = function inherits(ctor, superCtor) {
-                    ctor.super_ = superCtor
-                    var TempCtor = function () { }
-                    TempCtor.prototype = superCtor.prototype
-                    ctor.prototype = new TempCtor()
-                    ctor.prototype.constructor = ctor
-                }
-            }
-
-        }, {}], 15: [function (require, module, exports) {
+        }, {}],
+        14: [function (require, module, exports) {
             // shim for using process in browser
 
             var process = module.exports = {};
@@ -2379,7 +2453,7 @@
             process.version = ''; // empty string to avoid regexp issues
             process.versions = {};
 
-            function noop() { }
+            function noop() {}
 
             process.on = noop;
             process.addListener = noop;
@@ -2394,23 +2468,31 @@
             };
 
             // TODO(shtylman)
-            process.cwd = function () { return '/' };
+            process.cwd = function () {
+                return '/'
+            };
             process.chdir = function (dir) {
                 throw new Error('process.chdir is not supported');
             };
-            process.umask = function () { return 0; };
+            process.umask = function () {
+                return 0;
+            };
 
-        }, {}], 16: [function (require, module, exports) {
+        }, {}],
+        15: [function (require, module, exports) {
             'use strict';
 
             module.exports = require('./lib')
 
-        }, { "./lib": 21 }], 17: [function (require, module, exports) {
+        }, {
+            "./lib": 20
+        }],
+        16: [function (require, module, exports) {
             'use strict';
 
             var asap = require('asap/raw');
 
-            function noop() { }
+            function noop() {}
 
             // States:
             //
@@ -2431,6 +2513,7 @@
             // extract them to here.
             var LAST_ERROR = null;
             var IS_ERROR = {};
+
             function getThen(obj) {
                 try {
                     return obj.then;
@@ -2448,6 +2531,7 @@
                     return IS_ERROR;
                 }
             }
+
             function tryCallTwo(fn, a, b) {
                 try {
                     fn(a, b);
@@ -2464,17 +2548,17 @@
                     throw new TypeError('Promises must be constructed via new');
                 }
                 if (typeof fn !== 'function') {
-                    throw new TypeError('not a function');
+                    throw new TypeError('Promise constructor\'s argument is not a function');
                 }
-                this._45 = 0;
-                this._81 = 0;
-                this._65 = null;
-                this._54 = null;
+                this._40 = 0;
+                this._65 = 0;
+                this._55 = null;
+                this._72 = null;
                 if (fn === noop) return;
                 doResolve(fn, this);
             }
-            Promise._10 = null;
-            Promise._97 = null;
+            Promise._37 = null;
+            Promise._87 = null;
             Promise._61 = noop;
 
             Promise.prototype.then = function (onFulfilled, onRejected) {
@@ -2492,26 +2576,27 @@
                     res.then(resolve, reject);
                     handle(self, new Handler(onFulfilled, onRejected, res));
                 });
-            };
+            }
+
             function handle(self, deferred) {
-                while (self._81 === 3) {
-                    self = self._65;
+                while (self._65 === 3) {
+                    self = self._55;
                 }
-                if (Promise._10) {
-                    Promise._10(self);
+                if (Promise._37) {
+                    Promise._37(self);
                 }
-                if (self._81 === 0) {
-                    if (self._45 === 0) {
-                        self._45 = 1;
-                        self._54 = deferred;
+                if (self._65 === 0) {
+                    if (self._40 === 0) {
+                        self._40 = 1;
+                        self._72 = deferred;
                         return;
                     }
-                    if (self._45 === 1) {
-                        self._45 = 2;
-                        self._54 = [self._54, deferred];
+                    if (self._40 === 1) {
+                        self._40 = 2;
+                        self._72 = [self._72, deferred];
                         return;
                     }
-                    self._54.push(deferred);
+                    self._72.push(deferred);
                     return;
                 }
                 handleResolved(self, deferred);
@@ -2519,16 +2604,16 @@
 
             function handleResolved(self, deferred) {
                 asap(function () {
-                    var cb = self._81 === 1 ? deferred.onFulfilled : deferred.onRejected;
+                    var cb = self._65 === 1 ? deferred.onFulfilled : deferred.onRejected;
                     if (cb === null) {
-                        if (self._81 === 1) {
-                            resolve(deferred.promise, self._65);
+                        if (self._65 === 1) {
+                            resolve(deferred.promise, self._55);
                         } else {
-                            reject(deferred.promise, self._65);
+                            reject(deferred.promise, self._55);
                         }
                         return;
                     }
-                    var ret = tryCallOne(cb, self._65);
+                    var ret = tryCallOne(cb, self._55);
                     if (ret === IS_ERROR) {
                         reject(deferred.promise, LAST_ERROR);
                     } else {
@@ -2536,6 +2621,7 @@
                     }
                 });
             }
+
             function resolve(self, newValue) {
                 // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
                 if (newValue === self) {
@@ -2556,8 +2642,8 @@
                         then === self.then &&
                         newValue instanceof Promise
                     ) {
-                        self._81 = 3;
-                        self._65 = newValue;
+                        self._65 = 3;
+                        self._55 = newValue;
                         finale(self);
                         return;
                     } else if (typeof then === 'function') {
@@ -2565,29 +2651,30 @@
                         return;
                     }
                 }
-                self._81 = 1;
-                self._65 = newValue;
+                self._65 = 1;
+                self._55 = newValue;
                 finale(self);
             }
 
             function reject(self, newValue) {
-                self._81 = 2;
-                self._65 = newValue;
-                if (Promise._97) {
-                    Promise._97(self, newValue);
+                self._65 = 2;
+                self._55 = newValue;
+                if (Promise._87) {
+                    Promise._87(self, newValue);
                 }
                 finale(self);
             }
+
             function finale(self) {
-                if (self._45 === 1) {
-                    handle(self, self._54);
-                    self._54 = null;
+                if (self._40 === 1) {
+                    handle(self, self._72);
+                    self._72 = null;
                 }
-                if (self._45 === 2) {
-                    for (var i = 0; i < self._54.length; i++) {
-                        handle(self, self._54[i]);
+                if (self._40 === 2) {
+                    for (var i = 0; i < self._72.length; i++) {
+                        handle(self, self._72[i]);
                     }
-                    self._54 = null;
+                    self._72 = null;
                 }
             }
 
@@ -2613,14 +2700,17 @@
                     if (done) return;
                     done = true;
                     reject(promise, reason);
-                })
+                });
                 if (!done && res === IS_ERROR) {
                     done = true;
                     reject(promise, LAST_ERROR);
                 }
             }
 
-        }, { "asap/raw": 11 }], 18: [function (require, module, exports) {
+        }, {
+            "asap/raw": 11
+        }],
+        17: [function (require, module, exports) {
             'use strict';
 
             var Promise = require('./core.js');
@@ -2635,7 +2725,10 @@
                 });
             };
 
-        }, { "./core.js": 17 }], 19: [function (require, module, exports) {
+        }, {
+            "./core.js": 16
+        }],
+        18: [function (require, module, exports) {
             'use strict';
 
             //This file contains the ES6 extensions to the core Promises/A+ API
@@ -2655,8 +2748,8 @@
 
             function valuePromise(value) {
                 var p = new Promise(Promise._61);
-                p._81 = 1;
-                p._65 = value;
+                p._65 = 1;
+                p._55 = value;
                 return p;
             }
             Promise.resolve = function (value) {
@@ -2690,14 +2783,15 @@
                 return new Promise(function (resolve, reject) {
                     if (args.length === 0) return resolve([]);
                     var remaining = args.length;
+
                     function res(i, val) {
                         if (val && (typeof val === 'object' || typeof val === 'function')) {
                             if (val instanceof Promise && val.then === Promise.prototype.then) {
-                                while (val._81 === 3) {
-                                    val = val._65;
+                                while (val._65 === 3) {
+                                    val = val._55;
                                 }
-                                if (val._81 === 1) return res(i, val._65);
-                                if (val._81 === 2) reject(val._65);
+                                if (val._65 === 1) return res(i, val._55);
+                                if (val._65 === 2) reject(val._55);
                                 val.then(function (val) {
                                     res(i, val);
                                 }, reject);
@@ -2744,7 +2838,10 @@
                 return this.then(null, onRejected);
             };
 
-        }, { "./core.js": 17 }], 20: [function (require, module, exports) {
+        }, {
+            "./core.js": 16
+        }],
+        19: [function (require, module, exports) {
             'use strict';
 
             var Promise = require('./core.js');
@@ -2762,7 +2859,10 @@
                 });
             };
 
-        }, { "./core.js": 17 }], 21: [function (require, module, exports) {
+        }, {
+            "./core.js": 16
+        }],
+        20: [function (require, module, exports) {
             'use strict';
 
             module.exports = require('./core.js');
@@ -2772,7 +2872,15 @@
             require('./node-extensions.js');
             require('./synchronous.js');
 
-        }, { "./core.js": 17, "./done.js": 18, "./es6-extensions.js": 19, "./finally.js": 20, "./node-extensions.js": 22, "./synchronous.js": 23 }], 22: [function (require, module, exports) {
+        }, {
+            "./core.js": 16,
+            "./done.js": 17,
+            "./es6-extensions.js": 18,
+            "./finally.js": 19,
+            "./node-extensions.js": 21,
+            "./synchronous.js": 22
+        }],
+        21: [function (require, module, exports) {
             'use strict';
 
             // This file contains then/promise specific extensions that are only useful
@@ -2793,13 +2901,14 @@
                 } else {
                     return denodeifyWithoutCount(fn);
                 }
-            }
+            };
 
             var callbackFn = (
                 'function (err, res) {' +
                 'if (err) { rj(err); } else { rs(res); }' +
                 '}'
             );
+
             function denodeifyWithCount(fn, argumentCount) {
                 var args = [];
                 for (var i = 0; i < argumentCount; i++) {
@@ -2809,8 +2918,7 @@
                     'return function (' + args.join(',') + ') {',
                     'var self = this;',
                     'return new Promise(function (rs, rj) {',
-                    'var res = fn.call(',
-                    ['self'].concat(args).concat([callbackFn]).join(','),
+                    'var res = fn.call(', ['self'].concat(args).concat([callbackFn]).join(','),
                     ');',
                     'if (res &&',
                     '(typeof res === "object" || typeof res === "function") &&',
@@ -2821,6 +2929,7 @@
                 ].join('');
                 return Function(['Promise', 'fn'], body)(Promise, fn);
             }
+
             function denodeifyWithoutCount(fn) {
                 var fnLength = Math.max(fn.length - 1, 3);
                 var args = [];
@@ -2888,7 +2997,7 @@
                         }
                     }
                 }
-            }
+            };
 
             Promise.prototype.nodeify = function (callback, ctx) {
                 if (typeof callback != 'function') return this;
@@ -2902,9 +3011,13 @@
                         callback.call(ctx, err);
                     });
                 });
-            }
+            };
 
-        }, { "./core.js": 17, "asap": 10 }], 23: [function (require, module, exports) {
+        }, {
+            "./core.js": 16,
+            "asap": 10
+        }],
+        22: [function (require, module, exports) {
             'use strict';
 
             var Promise = require('./core.js');
@@ -2924,38 +3037,38 @@
                 };
 
                 Promise.prototype.getValue = function () {
-                    if (this._81 === 3) {
-                        return this._65.getValue();
+                    if (this._65 === 3) {
+                        return this._55.getValue();
                     }
 
                     if (!this.isFulfilled()) {
                         throw new Error('Cannot get a value of an unfulfilled promise.');
                     }
 
-                    return this._65;
+                    return this._55;
                 };
 
                 Promise.prototype.getReason = function () {
-                    if (this._81 === 3) {
-                        return this._65.getReason();
+                    if (this._65 === 3) {
+                        return this._55.getReason();
                     }
 
                     if (!this.isRejected()) {
                         throw new Error('Cannot get a rejection reason of a non-rejected promise.');
                     }
 
-                    return this._65;
+                    return this._55;
                 };
 
                 Promise.prototype.getState = function () {
-                    if (this._81 === 3) {
-                        return this._65.getState();
+                    if (this._65 === 3) {
+                        return this._55.getState();
                     }
-                    if (this._81 === -1 || this._81 === -2) {
+                    if (this._65 === -1 || this._65 === -2) {
                         return 0;
                     }
 
-                    return this._81;
+                    return this._65;
                 };
             };
 
@@ -2968,14 +3081,44 @@
                 Promise.prototype.getState = undefined;
             };
 
-        }, { "./core.js": 17 }], 24: [function (require, module, exports) {
-            module.exports = function isBuffer(arg) {
-                return arg && typeof arg === 'object'
-                    && typeof arg.copy === 'function'
-                    && typeof arg.fill === 'function'
-                    && typeof arg.readUInt8 === 'function';
+        }, {
+            "./core.js": 16
+        }],
+        23: [function (require, module, exports) {
+            if (typeof Object.create === 'function') {
+                // implementation from standard node.js 'util' module
+                module.exports = function inherits(ctor, superCtor) {
+                    ctor.super_ = superCtor
+                    ctor.prototype = Object.create(superCtor.prototype, {
+                        constructor: {
+                            value: ctor,
+                            enumerable: false,
+                            writable: true,
+                            configurable: true
+                        }
+                    });
+                };
+            } else {
+                // old school shim for old browsers
+                module.exports = function inherits(ctor, superCtor) {
+                    ctor.super_ = superCtor
+                    var TempCtor = function () {}
+                    TempCtor.prototype = superCtor.prototype
+                    ctor.prototype = new TempCtor()
+                    ctor.prototype.constructor = ctor
+                }
             }
-        }, {}], 25: [function (require, module, exports) {
+
+        }, {}],
+        24: [function (require, module, exports) {
+            module.exports = function isBuffer(arg) {
+                return arg && typeof arg === 'object' &&
+                    typeof arg.copy === 'function' &&
+                    typeof arg.fill === 'function' &&
+                    typeof arg.readUInt8 === 'function';
+            }
+        }, {}],
+        25: [function (require, module, exports) {
             (function (process, global) {
                 // Copyright Joyent, Inc. and other Node contributors.
                 //
@@ -3015,8 +3158,10 @@
                         if (x === '%%') return '%';
                         if (i >= len) return x;
                         switch (x) {
-                            case '%s': return String(args[i++]);
-                            case '%d': return Number(args[i++]);
+                            case '%s':
+                                return String(args[i++]);
+                            case '%d':
+                                return Number(args[i++]);
                             case '%j':
                                 try {
                                     return JSON.stringify(args[i++]);
@@ -3054,6 +3199,7 @@
                     }
 
                     var warned = false;
+
                     function deprecated() {
                         if (!warned) {
                             if (process.throwDeprecation) {
@@ -3086,7 +3232,7 @@
                                 console.error('%s %d: %s', set, pid, msg);
                             };
                         } else {
-                            debugs[set] = function () { };
+                            debugs[set] = function () {};
                         }
                     }
                     return debugs[set];
@@ -3220,8 +3366,8 @@
 
                     // IE doesn't make error fields non-enumerable
                     // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
-                    if (isError(value)
-                        && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
+                    if (isError(value) &&
+                        (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
                         return formatError(value);
                     }
 
@@ -3242,7 +3388,9 @@
                         }
                     }
 
-                    var base = '', array = false, braces = ['{', '}'];
+                    var base = '',
+                        array = false,
+                        braces = ['{', '}'];
 
                     // Make Array say that they are Array
                     if (isArray(value)) {
@@ -3346,7 +3494,9 @@
 
                 function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
                     var name, str, desc;
-                    desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+                    desc = Object.getOwnPropertyDescriptor(value, key) || {
+                        value: value[key]
+                    };
                     if (desc.get) {
                         if (desc.set) {
                             str = ctx.stylize('[Getter/Setter]', 'special');
@@ -3497,7 +3647,7 @@
                         typeof arg === 'boolean' ||
                         typeof arg === 'number' ||
                         typeof arg === 'string' ||
-                        typeof arg === 'symbol' ||  // ES6 symbol
+                        typeof arg === 'symbol' || // ES6 symbol
                         typeof arg === 'undefined';
                 }
                 exports.isPrimitive = isPrimitive;
@@ -3515,14 +3665,16 @@
 
 
                 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-                    'Oct', 'Nov', 'Dec'];
+                    'Oct', 'Nov', 'Dec'
+                ];
 
                 // 26 Feb 16:19:34
                 function timestamp() {
                     var d = new Date();
                     var time = [pad(d.getHours()),
-                    pad(d.getMinutes()),
-                    pad(d.getSeconds())].join(':');
+                        pad(d.getMinutes()),
+                        pad(d.getSeconds())
+                    ].join(':');
                     return [d.getDate(), months[d.getMonth()], time].join(' ');
                 }
 
@@ -3565,6 +3717,10 @@
                 }
 
             }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-        }, { "./support/isBuffer": 24, "_process": 15, "inherits": 14 }]
+        }, {
+            "./support/isBuffer": 24,
+            "_process": 14,
+            "inherits": 23
+        }]
     }, {}, [1])(1)
 });

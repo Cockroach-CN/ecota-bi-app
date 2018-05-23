@@ -2,10 +2,15 @@
 
 <script src="qsocks.bundle.js"></script>
 <script>
-
   var config = {
     host: 'sense-demo.qlik.com',
-    isSecure: true
+    isSecure: true,
+    headers: {
+      'X-Qlik-User': 'UserDirectory=Internal;UserId=sa_repository' // Passing a user to QIX to authenticate as
+    },
+    key: "client_key",
+    cert: "client",
+    rejectUnauthorized: false // Don't reject self-signed certs
   };
 
   //Connect to a server using the config object.
@@ -19,13 +24,13 @@
     global.getDocList().then(function (docList) {
 
       docList.forEach(function (doc) {
+        console.log("---------------------")
         console.log(doc)
       });
 
     });
 
   });
-
 </script>
 
 <body>
