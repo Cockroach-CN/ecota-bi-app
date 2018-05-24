@@ -3,6 +3,7 @@ import ReactDom from "react-dom"
 import {
     Tabs,
     Icon,
+    Toast,
     Carousel,
 } from "antd-mobile";
 import echarts from "echarts";
@@ -82,6 +83,7 @@ class Panel extends React.Component {
         super(props);
         const { lines } = props.tab || [];
         this.state = {
+            loading: false,
             unionkey: Math.random(),
             datas: lines,
         }
@@ -97,19 +99,26 @@ class Panel extends React.Component {
         }
     }
 
-    getList() {
+    async getList() {
         const { tab, opts } = this.props;
         const { unionkey } = this.state;
         const width = document.body.clientWidth;
-        const datas = getTabData(tab, opts);
-        datas.map((data, di) => data.options.map((option, oi) => {
-            const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
-            if (dom) {
-                dom.style.width = width - 30 + "px";
-                const chart = echarts.init(dom);
-                chart.setOption(option);
-            }
-        }));
+        try {
+            Toast.loading();
+            const datas = await getTabData(tab, opts);
+            datas.map((data, di) => data.options.map((option, oi) => {
+                const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
+                if (dom) {
+                    dom.style.width = width - 30 + "px";
+                    const chart = echarts.init(dom);
+                    chart.setOption(option);
+                }
+            }));
+        } catch (e) {
+            Toast.fail("加载失败！");
+        } finally {
+            Toast.hide();
+        }
     }
 
     render() {
