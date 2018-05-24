@@ -6,10 +6,10 @@ const getTabData = (tab, opts) => {
     (values || []).map(v => map[v.key] = v.value);
     console.log(tab.key, map);
 
-    const datas = JSON.parse(JSON.stringify(tab.charts || []));
+    const datas = JSON.parse(JSON.stringify(tab.lines || []));
     datas.map((data, i) => {
         datas[i].options = [];
-        data.keys.map((key, j) => {
+        (data.charts || []).map((key, j) => {
             datas[i].options[j] = Fn[key](opts);
         })
     });

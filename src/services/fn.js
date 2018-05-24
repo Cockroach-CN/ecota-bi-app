@@ -21,21 +21,3 @@ const Fn = {
 }
 
 export default Fn;
-
-
-window.onload = function () {
-    var ws = new WebSocket("ws://localhost:8181");
-    ws.onopen = function () {
-        console.warn("onopen");
-        ws.send("Hello!");
-    }
-
-    ws.onmessage = function (evt) {
-        console.warn("onmessage");
-        console.warn(evt);
-    }
-
-    ws.onerror = function (evt) {
-        console.warn("onerror");
-    };
-}

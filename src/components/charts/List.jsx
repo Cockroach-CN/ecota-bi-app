@@ -80,10 +80,10 @@ class Panel extends React.Component {
 
     constructor(props) {
         super(props);
-        const { charts } = props.tab || [];
+        const { lines } = props.tab || [];
         this.state = {
             unionkey: Math.random(),
-            datas: charts,
+            datas: lines,
         }
     }
 
@@ -104,9 +104,11 @@ class Panel extends React.Component {
         const datas = getTabData(tab, opts);
         datas.map((data, di) => data.options.map((option, oi) => {
             const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
-            dom.style.width = width - 30 + "px";
-            const chart = echarts.init(dom);
-            chart.setOption(option);
+            if (dom) {
+                dom.style.width = width - 30 + "px";
+                const chart = echarts.init(dom);
+                chart.setOption(option);
+            }
         }));
     }
 
@@ -117,12 +119,12 @@ class Panel extends React.Component {
             <div className="info-tab-content">
                 <div className="content-header">{tab.header}</div>
                 {datas.map((data, di) =>
-                    <Carousel key={data.key} style={styleTabContent} dots={(data.keys || []).length > 1 ? true : false}>
-                        {(data.keys || []).map((o, ci) =>
+                    <Carousel key={data.key} style={styleTabContent} dots={(data.charts || []).length > 1 ? true : false}>
+                        {(data.charts || []).map((o, ci) =>
                             <div key={ci} className="content-chart">
                                 <div id={`chart-${di}-${ci}-${unionkey}`}></div>
                                 {ci === 0 &&
-                                    <i style={styleFangda} className="iconfont icon-fangda" onClick={() => onLarge((data.keys || [])[ci])} />}
+                                    <i style={styleFangda} className="iconfont icon-fangda" onClick={() => onLarge((data.charts || [])[ci])} />}
                             </div>
                         )}
                     </Carousel>
