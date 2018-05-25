@@ -9,7 +9,7 @@ wss.on("connection", function (ws) {
         if (ws.readyState === 1) {
             setTimeout(function () {
                 ws.send(message);
-            }, 2000)
+            }, 500)
         }
     });
 })

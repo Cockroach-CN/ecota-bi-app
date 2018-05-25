@@ -1,12 +1,11 @@
 const keys = {
-    DATA_KEY_1: "data_key_1",
-    DATA_KEY_2: "data_key_2",
-    DATA_KEY_3: "data_key_3",
-    DATA_KEY_4: "data_key_4",
-    DATA_KEY_5: "data_key_5",
-    DATA_KEY_6: "data_key_6",
+    CHART_KEY_1: "data_key_1",
+    CHART_KEY_2: "data_key_2",
+    CHART_KEY_3: "data_key_3",
+    CHART_KEY_4: "data_key_4",
+    CHART_KEY_5: "data_key_5",
+    CHART_KEY_6: "data_key_6",
 }
-
 const groups = [{
         key: "1",
         name: "销售分析",
@@ -17,16 +16,16 @@ const groups = [{
                 imageUrl: "images/pie2.png",
                 lines: [{
                     key: "1-1-1",
-                    charts: [keys.DATA_KEY_1, keys.DATA_KEY_3, keys.DATA_KEY_6],
+                    charts: [keys.CHART_KEY_1, keys.CHART_KEY_3, keys.CHART_KEY_6],
                 }, {
                     key: "1-1-2",
-                    charts: [keys.DATA_KEY_3],
+                    charts: [keys.CHART_KEY_3],
                 }, {
                     key: "1-1-3",
-                    charts: [keys.DATA_KEY_6],
+                    charts: [keys.CHART_KEY_6],
                 }, {
                     key: "1-1-4",
-                    charts: [keys.DATA_KEY_5],
+                    charts: [keys.CHART_KEY_5],
                 }],
             },
             {
@@ -36,10 +35,10 @@ const groups = [{
                 imageUrl: "images/line.png",
                 lines: [{
                     key: "1-2-1",
-                    charts: [keys.DATA_KEY_3],
+                    charts: [keys.CHART_KEY_3],
                 }, {
                     key: "1-2-2",
-                    charts: [keys.DATA_KEY_4, keys.DATA_KEY_3],
+                    charts: [keys.CHART_KEY_4, keys.CHART_KEY_3],
                 }],
             },
             {
@@ -49,10 +48,10 @@ const groups = [{
                 imageUrl: "images/bar.png",
                 lines: [{
                     key: "1-3-1",
-                    kechartsys: [keys.DATA_KEY_3, keys.DATA_KEY_1],
+                    charts: [keys.CHART_KEY_3, keys.CHART_KEY_1],
                 }, {
                     key: "1-3-2",
-                    charts: [keys.DATA_KEY_6],
+                    charts: [keys.CHART_KEY_6],
                 }],
             }, {
                 key: "1-4",
@@ -61,10 +60,10 @@ const groups = [{
                 imageUrl: "images/scatter.png",
                 lines: [{
                     key: "1-4-1",
-                    charts: [keys.DATA_KEY_6, keys.DATA_KEY_3],
+                    charts: [keys.CHART_KEY_6, keys.CHART_KEY_3],
                 }, {
                     key: "1-4-2",
-                    charts: [keys.DATA_KEY_2],
+                    charts: [keys.CHART_KEY_2],
                 }],
             }
         ]
@@ -79,7 +78,7 @@ const groups = [{
                 imageUrl: "images/pie.png",
                 lines: [{
                     key: "2-1-1",
-                    charts: [keys.DATA_KEY_2, keys.DATA_KEY_1],
+                    charts: [keys.CHART_KEY_2, keys.CHART_KEY_1],
                 }],
             },
             {
@@ -89,12 +88,13 @@ const groups = [{
                 imageUrl: "images/pie.png",
                 lines: [{
                     key: "2-2-2",
-                    charts: [keys.DATA_KEY_6],
+                    charts: [keys.CHART_KEY_6],
                 }],
             },
         ]
     }
 ];
+
 
 const filters = [{
         key: "brand",

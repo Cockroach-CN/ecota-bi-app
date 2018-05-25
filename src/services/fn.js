@@ -11,14 +11,15 @@ const {
     keys
 } = window.settings;
 
-const url = "ws://127.0.0.1:8181";
+// const url = "ws://127.0.0.1:8181";
+const url = "ws://10.0.1.60:8181";
 const Fn = {
-    [keys.DATA_KEY_1]: (options) => socket.send(url, option1),
-    [keys.DATA_KEY_2]: (options) => socket.send(url, option2),
-    [keys.DATA_KEY_3]: (options) => socket.send(url, option3),
-    [keys.DATA_KEY_4]: (options) => socket.send(url, option4),
-    [keys.DATA_KEY_5]: (options) => socket.send(url, option5),
-    [keys.DATA_KEY_6]: (options) => socket.send(url, option6),
+    [keys.CHART_KEY_1]: (options) => socket.send(url, option1),
+    [keys.CHART_KEY_2]: (options) => socket.send(url, option2),
+    [keys.CHART_KEY_3]: (options) => socket.send(url, option3),
+    [keys.CHART_KEY_4]: (options) => socket.send(url, option4),
+    [keys.CHART_KEY_5]: (options) => socket.send(url, option5),
+    [keys.CHART_KEY_6]: (options) => socket.send(url, option6),
 }
 
 export default Fn;

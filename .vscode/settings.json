@@ -2,6 +2,7 @@
 {
     "files.exclude": {
         "node_modules": true,
+        "test": true,
         ".gitignore": true,
         ".npmignore": true
     },
