@@ -1,7 +1,7 @@
 import React from "react";
 import echarts from "echarts";
 import Filter from "../elements/Filter.jsx";
-import { Toast} from "antd-mobile";
+import { Toast } from "antd-mobile";
 import { NavBar } from "../elements/Common.jsx";
 import { PAGEMAP } from "../../commons/common.js";
 import { getChartData } from "../../services/service.js";
@@ -24,7 +24,7 @@ class Index extends React.Component {
         this.getData();
     }
 
-     async getData() {
+    async getData() {
         const { ckey, opts } = this.props.options;
         try {
             Toast.loading();
@@ -35,6 +35,7 @@ class Index extends React.Component {
             const chart = echarts.init(dom);
             chart.setOption(data);
         } catch (e) {
+            console.error(e);
             Toast.fail("加载失败！");
         } finally {
             Toast.hide();

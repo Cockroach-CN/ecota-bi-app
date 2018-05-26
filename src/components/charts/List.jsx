@@ -115,6 +115,7 @@ class Panel extends React.Component {
                 }
             }));
         } catch (e) {
+            console.error(e);
             Toast.fail("加载失败！");
         } finally {
             Toast.hide();

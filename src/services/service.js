@@ -1,10 +1,12 @@
-import Fn from "./fn.js";
+import {
+    get_sense_data
+} from "./fn.js";
 
 const getTabData = async (tab, opts) => {
-    var map = {};
+    var params = {};
     var values = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "list");
-    (values || []).map(v => map[v.key] = v.value);
-    console.log(tab.key, map);
+    (values || []).map(v => params[v.key] = v.value);
+    // console.log(tab.key, params);
 
     const datas = JSON.parse(JSON.stringify(tab.lines || []));
     return new Promise(function (resolve, reject) {
@@ -12,7 +14,7 @@ const getTabData = async (tab, opts) => {
         datas.map((data, i) => {
             datas[i].options = [];
             (data.charts || []).map((key, j) => {
-                promises.push(Fn[key](opts));
+                promises.push(get_sense_data(key, params));
             });
         });
         Promise.all(promises).then(function (os) {
@@ -27,12 +29,13 @@ const getTabData = async (tab, opts) => {
 }
 
 const getChartData = (key, opts) => {
-    var map = {};
+    var params = {};
     var values = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "info");
-    (values || []).map(v => map[v.key] = v.value);
-    // console.log(key, map);
-
-    return Fn[key](opts);
+    (values || []).map(v => params[v.key] = v.value);
+    // console.log(key, params);
+    const data = get_sense_data(key, params);
+    console.log(data);
+    return data;
 }
 
 export {

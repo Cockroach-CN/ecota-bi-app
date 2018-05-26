@@ -22,4 +22,11 @@ const Fn = {
     [keys.CHART_KEY_6]: (options) => socket.send(url, option6),
 }
 
-export default Fn;
+// export default Fn;
+
+
+export function get_sense_data(key, params) {
+    return new Promise(function (resolve, reject) {
+        resolve(option1);
+    })
+}
