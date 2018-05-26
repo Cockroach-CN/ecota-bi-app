@@ -4,9 +4,8 @@ import {
 
 const getTabData = async (tab, opts) => {
     var params = {};
-    var values = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "list");
+    var values = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "list" || o.class === "both");
     (values || []).map(v => params[v.key] = v.value);
-    console.log(tab.key, params);
 
     const datas = JSON.parse(JSON.stringify(tab.lines || []));
     return new Promise(function (resolve, reject) {
@@ -33,9 +32,8 @@ const getTabData = async (tab, opts) => {
 
 const getChartData = (key, opts) => {
     var params = {};
-    var values = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "info");
+    var values = Object.keys(opts).map(key => opts[key]).filter(o => o.class === "info" || o.class === "both");
     (values || []).map(v => params[v.key] = v.value);
-    console.log(key, params);
 
     return get_sense_data(key, params).then(r => {
         console.log(r);

@@ -1,6 +1,7 @@
 import React from "react";
 import echarts from "echarts";
 import Filter from "../elements/Filter.jsx";
+import { o2o } from "../../commons/common.js"
 import { Toast } from "antd-mobile";
 import { NavBar } from "../elements/Common.jsx";
 import { PAGEMAP } from "../../commons/common.js";
@@ -10,6 +11,7 @@ class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            params: o2o(this.props.options.opts),
             random: 0,
             loading: false,
             showModal: false,
@@ -25,10 +27,10 @@ class Index extends React.Component {
     }
 
     async getData() {
-        const { ckey, opts } = this.props.options;
+        const { ckey } = this.props.options;
         try {
             Toast.loading();
-            const data = await getChartData(ckey, opts);
+            const data = await getChartData(ckey, this.state.params);
             const width = document.body.clientWidth;
             const dom = document.getElementById("chart");
             dom.style.width = width + "px";
@@ -43,19 +45,19 @@ class Index extends React.Component {
     }
 
     render() {
-        const { random, showModal } = this.state;
+        const { params, random, showModal } = this.state;
         return <div id="container">
             <NavBar
                 onLeftClick={() => this.props.setPage(PAGEMAP.LIST, true)}
                 onRightClick={() => this.setState({ showModal: true })} />
             <div id="chart" style={styleContent} className="info-tab-content"></div>
             <Filter type="info"
+                opts={params}
                 random={random}
                 visable={showModal}
-                opts={this.props.options.opts}
-                onOk={(opts) => this.props.setOptions({ opts }, () => {
+                onOk={(params) => this.setState({ params }, () => {
                     this.getData();
-                    this.setState({ random: Math.random(), showModal: false });
+                    this.setState({ random: Math.random(), showModal: false })
                 })}
                 onClose={() => this.setState({ showModal: false })} />
         </div>

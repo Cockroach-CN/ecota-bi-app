@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { o2o } from "../../commons/common.js"
 import { Tag, List2Column } from "./Common.jsx";
 import { Modal, WhiteSpace, WingBlank, Button, SegmentedControl, DatePicker, List, Flex, } from "antd-mobile";
 import "./Style.less";
@@ -48,7 +49,7 @@ class Index extends React.Component {
                 onClose && onClose();
             }}>
             <WhiteSpace size="sm" />
-            {(filters || []).filter(f => f.class === type).map((f, i) => {
+            {(filters || []).filter(f => f.class === type || f.class === "both").map((f, i) => {
                 if (options[f.key]) {
                     return <div key={i} className="options-container">
                         <div>
@@ -142,8 +143,6 @@ class Index extends React.Component {
     }
 
 }
-
-const o2o = (obj) => window.merge({}, obj);
 
 const styleTagRight = {
     float: "right",

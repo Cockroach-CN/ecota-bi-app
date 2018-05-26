@@ -26,6 +26,7 @@ const Fn = {
 
 
 export function get_sense_data(key, params) {
+    console.log(key, params);
     return new Promise(function (resolve, reject) {
         resolve(option1);
     })
