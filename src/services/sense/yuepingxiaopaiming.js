@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-function yuepingxiaopaiming(obj) {
+export default function yuepingxiaopaiming(obj) {
 	//var myChart = echarts.init(document.getElementById('QV07'));
 	var i = 0;
 	var data = new Array();
@@ -102,13 +102,13 @@ function yuepingxiaopaiming(obj) {
 			},
 			markPoint: {
 				data: [{
-						type: 'max',
-						name: '最大值'
-					},
-					{
-						type: 'min',
-						name: '最小值'
-					}
+					type: 'max',
+					name: '最大值'
+				},
+				{
+					type: 'min',
+					name: '最小值'
+				}
 				]
 			},
 			markLine: {

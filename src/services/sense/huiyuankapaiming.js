@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-function huiyuankapaiming(obj) {
+export default function huiyuankapaiming(obj) {
 	var i = 0;
 	var data = new Array();
 	$.each(obj.qHyperCube.qDataPages[0].qMatrix, function (key, value) {

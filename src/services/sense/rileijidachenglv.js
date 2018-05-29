@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-function rileijidachenglv(obj) {
+export default function rileijidachenglv(obj) {
 	//var myChart = echarts.init(document.getElementById('QV05'));
 	var data = new Array();
 
@@ -92,100 +92,100 @@ function rileijidachenglv(obj) {
 			},
 		}],
 		yAxis: [{
-				type: 'value',
-				name: '金额',
-				min: 0,
-				max: 40,
-				interval: 8,
-				axisLabel: {
-					formatter: '{value} 亿',
-					fontSize: 10,
-				},
-				splitLine: {
-					show: true,
-					lineStyle: {
-						color: '#9DE1FD',
-						type: 'dashed'
-					}
-				},
-				axisLine: {
-					show: false
-				},
-				axisTick: {
-					show: false
-				},
-				nameTextStyle: {
-					align: 'right',
-				},
+			type: 'value',
+			name: '金额',
+			min: 0,
+			max: 40,
+			interval: 8,
+			axisLabel: {
+				formatter: '{value} 亿',
+				fontSize: 10,
+			},
+			splitLine: {
+				show: true,
+				lineStyle: {
+					color: '#9DE1FD',
+					type: 'dashed'
+				}
+			},
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			nameTextStyle: {
+				align: 'right',
+			},
+
+		},
+		{
+			type: 'value',
+			name: '达成率',
+			min: 0,
+			max: 200,
+			interval: 40,
+			axisLabel: {
+				formatter: '{value} %',
+				fontSize: 10,
 
 			},
-			{
-				type: 'value',
-				name: '达成率',
-				min: 0,
-				max: 200,
-				interval: 40,
-				axisLabel: {
-					formatter: '{value} %',
-					fontSize: 10,
+			splitLine: {
+				show: true,
+				lineStyle: {
+					color: '#9DE1FD',
+					type: 'dashed'
+				}
+			},
+			axisLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
 
-				},
-				splitLine: {
-					show: true,
-					lineStyle: {
-						color: '#9DE1FD',
-						type: 'dashed'
-					}
-				},
-				axisLine: {
-					show: false
-				},
-				axisTick: {
-					show: false
-				},
-
-			}
+		}
 		],
 		series: [{
-				name: '销售额',
-				type: 'bar',
-				//data: turnover,
-				data: d1,
-				barWidth: 12,
-				itemStyle: {
-					normal: {
-						barBorderRadius: [5, 5, 0, 0],
-						color: '#61A6D3',
-					}
-				}
-			},
-			{
-				name: '预算额',
-				type: 'bar',
-				//data:yusuan,
-				data: d2,
-				barWidth: 12,
-				itemStyle: {
-					normal: {
-						barBorderRadius: [5, 5, 0, 0],
-						color: '#B2182B',
-					}
-				}
-			},
-			{
-				name: '达成率',
-				type: 'line',
-				yAxisIndex: 1,
-				//data:dachenglv,
-				data: d3,
-				barWidth: 15,
-				itemStyle: {
-					normal: {
-						barBorderRadius: [5, 5, 0, 0],
-						color: '#EF8A62',
-					}
+			name: '销售额',
+			type: 'bar',
+			//data: turnover,
+			data: d1,
+			barWidth: 12,
+			itemStyle: {
+				normal: {
+					barBorderRadius: [5, 5, 0, 0],
+					color: '#61A6D3',
 				}
 			}
+		},
+		{
+			name: '预算额',
+			type: 'bar',
+			//data:yusuan,
+			data: d2,
+			barWidth: 12,
+			itemStyle: {
+				normal: {
+					barBorderRadius: [5, 5, 0, 0],
+					color: '#B2182B',
+				}
+			}
+		},
+		{
+			name: '达成率',
+			type: 'line',
+			yAxisIndex: 1,
+			//data:dachenglv,
+			data: d3,
+			barWidth: 15,
+			itemStyle: {
+				normal: {
+					barBorderRadius: [5, 5, 0, 0],
+					color: '#EF8A62',
+				}
+			}
+		}
 		]
 	};
 	return option;

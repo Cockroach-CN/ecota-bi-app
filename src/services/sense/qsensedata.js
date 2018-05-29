@@ -1,4 +1,13 @@
 ﻿import qsocks from "qsocks";
+import huiyuankapaiming from "./huiyuankapaiming.js";
+import yueyusuanwanchenglv from "./yueyusuanwanchenglv.js";
+import rileijidachenglv from "./rileijidachenglv.js";
+import yuedachenglv from "./yuedachenglv.js";
+import yuepingxiaopaiming from "./yuepingxiaopaiming.js";
+import yueyingkehuanbi from "./yueyingkehuanbi.js";
+import yueyingketongbi from "./yueyingketongbi.js";
+import yueyingyeetongbi from "./yueyingyeetongbi.js";
+import guolv from "./guolv.js";
 
 export default function qsensedata(id, params) {
 

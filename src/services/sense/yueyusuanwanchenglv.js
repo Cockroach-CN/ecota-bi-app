@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-function yueyusuanwanchenglv(obj) {
+export default function yueyusuanwanchenglv(obj) {
 	//var myChart = echarts.init(document.getElementById('QV11'));
 	var i = 0;
 	var data = new Array();

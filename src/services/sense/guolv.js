@@ -1,6 +1,6 @@
 ﻿import qsocks from "qsocks";
 
-function guolv(params) {
+export default function guolv(params) {
 
 	var keys = new Array();
 	for (var key in params) {

@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-function yueyingketongbi(obj) {
+export default function yueyingketongbi(obj) {
 
 	//var myChart = echarts.init(document.getElementById('QV09'));
 	var i = 0;

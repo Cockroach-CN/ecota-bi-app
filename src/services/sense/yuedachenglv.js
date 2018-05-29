@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-function yuedachenglv(obj) {
+export default function yuedachenglv(obj) {
 
 	//var myChart = echarts.init(document.getElementById('QV06'));
 
@@ -135,42 +135,42 @@ function yuedachenglv(obj) {
 			}
 		],
 		series: [{
-				name: '销售额',
-				type: 'bar',
-				data: turnover,
-				barWidth: 12,
-				itemStyle: {
-					normal: {
-						barBorderRadius: [5, 5, 0, 0],
-						color: '#EF8A62',
-					}
-				}
-			},
-			{
-				name: '预算额',
-				type: 'bar',
-				data: yusuan,
-				barWidth: 12,
-				itemStyle: {
-					normal: {
-						barBorderRadius: [5, 5, 0, 0],
-						color: '#2166AC',
-					}
-				}
-			},
-			{
-				name: '达成率',
-				type: 'line',
-				yAxisIndex: 1,
-				data: dachenglv,
-
-				itemStyle: {
-					normal: {
-						barBorderRadius: [5, 5, 0, 0],
-						color: '#B2182B ',
-					}
+			name: '销售额',
+			type: 'bar',
+			data: turnover,
+			barWidth: 12,
+			itemStyle: {
+				normal: {
+					barBorderRadius: [5, 5, 0, 0],
+					color: '#EF8A62',
 				}
 			}
+		},
+		{
+			name: '预算额',
+			type: 'bar',
+			data: yusuan,
+			barWidth: 12,
+			itemStyle: {
+				normal: {
+					barBorderRadius: [5, 5, 0, 0],
+					color: '#2166AC',
+				}
+			}
+		},
+		{
+			name: '达成率',
+			type: 'line',
+			yAxisIndex: 1,
+			data: dachenglv,
+
+			itemStyle: {
+				normal: {
+					barBorderRadius: [5, 5, 0, 0],
+					color: '#B2182B ',
+				}
+			}
+		}
 		]
 	};
 	return option;
