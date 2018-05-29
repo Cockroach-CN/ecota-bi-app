@@ -34,6 +34,7 @@ class App extends React.Component {
             this.state.options.opts[f.key] = {
                 key: f.key,
                 type: "date",
+                operate_type: f.type,
                 whole: true,
                 class: f.class,
                 value: f.type === "btn" ? [] : "",
