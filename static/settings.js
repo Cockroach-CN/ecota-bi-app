@@ -1,10 +1,12 @@
 const keys = {
-    CHART_KEY_1: "data_key_1",
-    CHART_KEY_2: "data_key_2",
-    CHART_KEY_3: "data_key_3",
-    CHART_KEY_4: "data_key_4",
-    CHART_KEY_5: "data_key_5",
-    CHART_KEY_6: "data_key_6",
+    KFJRN: "kFJrN",
+    BMSQW: "BmsqW",
+    HYQJJ: "HyQJJ",
+    HYXRDW: "HyxrDw",
+    EEUDGE: "eeUdGe",
+    LYJSJYJ: "LYJsJyJ",
+    LVWMJQG: "LvWmjQg",
+    UMCTV: "umCTV"
 }
 const groups = [{
     key: "1",
@@ -16,16 +18,16 @@ const groups = [{
         imageUrl: "images/pie2.png",
         lines: [{
             key: "1-1-1",
-            charts: [keys.CHART_KEY_1, keys.CHART_KEY_3, keys.CHART_KEY_6],
+            charts: [keys.BMSQW, keys.UMCTV],
         }, {
             key: "1-1-2",
-            charts: [keys.CHART_KEY_3],
+            charts: [keys.HYQJJ],
         }, {
             key: "1-1-3",
-            charts: [keys.CHART_KEY_6],
+            charts: [keys.KFJRN],
         }, {
             key: "1-1-4",
-            charts: [keys.CHART_KEY_5],
+            charts: [keys.BMSQW],
         }],
     },
     {
@@ -35,10 +37,10 @@ const groups = [{
         imageUrl: "images/line.png",
         lines: [{
             key: "1-2-1",
-            charts: [keys.CHART_KEY_3],
+            charts: [keys.KFJRN],
         }, {
             key: "1-2-2",
-            charts: [keys.CHART_KEY_4, keys.CHART_KEY_3],
+            charts: [keys.HYXRDW, keys.KFJRN],
         }],
     },
     {
@@ -48,10 +50,10 @@ const groups = [{
         imageUrl: "images/bar.png",
         lines: [{
             key: "1-3-1",
-            charts: [keys.CHART_KEY_3, keys.CHART_KEY_1],
+            charts: [keys.UMCTV, keys.KFJRN],
         }, {
             key: "1-3-2",
-            charts: [keys.CHART_KEY_6],
+            charts: [keys.HYQJJ],
         }],
     }, {
         key: "1-4",
@@ -60,10 +62,10 @@ const groups = [{
         imageUrl: "images/scatter.png",
         lines: [{
             key: "1-4-1",
-            charts: [keys.CHART_KEY_6, keys.CHART_KEY_3],
+            charts: [keys.HYQJJ, keys.HYXRDW],
         }, {
             key: "1-4-2",
-            charts: [keys.CHART_KEY_2],
+            charts: [keys.EEUDGE],
         }],
     }
     ]
@@ -78,7 +80,7 @@ const groups = [{
         imageUrl: "images/pie.png",
         lines: [{
             key: "2-1-1",
-            charts: [keys.CHART_KEY_2, keys.CHART_KEY_1],
+            charts: [keys.BMSQW, keys.EEUDGE],
         }],
     },
     {
@@ -88,7 +90,7 @@ const groups = [{
         imageUrl: "images/pie.png",
         lines: [{
             key: "2-2-2",
-            charts: [keys.CHART_KEY_6],
+            charts: [keys.HYXRDW],
         }],
     },
     ]
