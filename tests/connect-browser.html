@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+  <script src="jquery-1.11.1.min.js"></script>
+  <script src="qsocks.bundle.js"></script>
+  <script src="../src/services/sense/huiyuankapaiming.js"></script>
+  <script src="../src/services/sense/yueyusuanwanchenglv.js"></script>
+  <script src="../src/services/sense/huiyuankapaiming.js"></script>
+  <script src="../src/services/sense/rileijidachenglv.js"></script>
+  <script src="../src/services/sense/yuedachenglv.js"></script>
+  <script src="../src/services/sense/yuepingxiaopaiming.js"></script>
+  <script src="../src/services/sense/yueyingkehuanbi.js"></script>
+  <script src="../src/services/sense/yueyingketongbi.js"></script>
+  <script src="../src/services/sense/yueyingyeetongbi.js"></script>
+  <script src="../src/services/sense/guolv.js"></script>
+  <script src="../src/services/sense/qsensedata.js"></script>
+  <script>
+    var params = {
+      "区域市场名称": ["北京市场", "东北市场"],
+      "门店名称": ["汉拿山北京方庄店"],
+      "营业日期": "2018-05-10"
+    };
+    //alert("区域市场名称");
+
+    var data_id = ["kFJrN", "BmsqW", "HyQJJ", "HyxrDw", "eeUdGe", "LYJsJyJ", "LvWmjQg", "umCTV"];
+
+    // for(var i=0;i<data_id.length;i++){
+
+    //   var aa= qsensedata(data_id[i],params);
+    //  console.log(aa);
+    //  }
+
+    //var data_id =["kFJrN"];
+    //for(var j=0;j<10;j++){
+    guolv("kFJrN", params);
+    setTimeout(function () {
+      //var data_id =["kFJrN","BmsqW","HyQJJ","HyxrDw","eeUdGe","LYJsJyJ","LvWmjQg","umCTV"];
+      for (var i = 0; i < data_id.length; i++) {
+
+        var aa = qsensedata(data_id[i], params);
+        console.log(aa);
+      }
+    }, 2000);
+    //}
+    // var aa= qsensedata("kFJrN",params);
+    // console.log(aa);
+    // setTimeout(function()
+    // {
+    // var aa= qsensedata("kFJrN",params);
+    // console.log(aa);},0);
+    // setTimeout(function()
+    // {
+    // var bb= qsensedata("BmsqW",params);
+    // console.log(bb);},3000);
+
+    // setTimeout(function()
+    // {
+    // var bb= qsensedata("HyQJJ",params);
+    // console.log(bb);},6000);
+    // var aa= qsensedata("umCTV",params);
+    // console.log(aa);
+
+    // var obj={"name":["傅红雪","abc"],"age":"24","profession":"刺客"};  
+    // console.log("Key是---:" + obj);
+
+    // for(var key in obj)
+    // {
+    // console.log("Key是:" + key);
+    // console.log("对应的值是:" + obj[key]);
+    // obj[key]=["123","as"];
+    // console.log("对应的值是:" + obj[key][1]);
+    // }
+
+    var config = {
+      host: 'nan',
+      //origin: 'http://localhost',
+      rejectUnauthorized: false,
+      isSecure: true
+    };
+
+    //Connect to a server using the config object.
+    //Connecting without a config object automatically assumes a instance of Qlik Sense Desktop
+
+    //When connected we are returned with a handle that represents the Global class.
+
+    //  qsocks.Connect(config)
+    //     .then(function (global) {
+    //       console.log(global);
+    //       return global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')
+    //     }).then(function (app) {
+    //      console.log(app);
+
+    //       app.clearAll(false).then(function (cube) {
+
+
+    //       })
+    //         .catch(function (err) { console.log(err) })
+
+    //     });
+
+
+
+    //   var option= qsocks.Connect(config)
+    // 	    .then(function (global) {
+    // 	      // console.log(global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462'));
+    // 	     return  global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')
+    // 	    }).then( async(app) => {
+    // 	 	// console.log(app);
+
+    // 	 	var _data = null;
+
+
+
+    // 	     app.clearAll(false).then(function (cube) {}).catch(function (err) { console.log(err) });
+
+    // 	     app.getField("区域市场名称").then(function (field) {
+    // 	    	  var sc=["北京市场","东北市场"];
+    // 	    	  var sc_values=new Array();
+    // 	    	  for(var i=0;i<sc.length;i++){
+    // 	        		 sc_values[i]={
+    // 								"qText": sc[i],
+    // 								"qIsNumeric": false,
+    // 								"qNumber": 0
+    // 							};
+
+    // 				 }
+    // 	    	  field.selectValues(sc_values,false,false).then(function (layout) {
+
+
+    // 	          // console.log(layout);
+
+
+    // 	        })
+    // 	      }).catch(function (err) { console.log(err) });
+
+
+    // 	      // console.log("--------------");
+    // 	      var _data = await app.getObject("kFJrN").then( async (cube) => {
+    //              var _ddd = await cube.getLayout().then(function (layout) {
+
+    // // 	           var i=0;
+    // // 	            var data=new Array();
+    // // 		           $.each(layout.qHyperCube.qDataPages[0].qMatrix, function(key, value) {
+
+    // // 		        	data[i]={'name':value[0].qText,"value":(value[1].qNum*100).toFixed(2)};
+    // // 		        					i++;
+    // // 		        	});
+
+    // 		          var obj= huiyuankapaiming(layout);
+    // 		          // console.log(obj);
+    // 		          return obj;
+    // 	              // console.log(layout);
+
+    // 	        })
+    // 	        // console.log(_ddd);
+    // 	        return _ddd;
+    // 	      }).catch(function (err) { console.log(err) })
+    // 		 // console.log(_data);
+    // 		return _data;
+
+
+    // 	    });
+
+
+    // 	    option.then(data => {
+    // 	    	console.log("=============");
+    // 	    	console.log(data);
+    // 	    })
+    //   qsocks.Connect(config)
+    //     .then(function (global) {
+    //       console.log(global);
+    //       return global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')
+    //     }).then(function (app) {
+    //  console.log(app);
+
+
+    //       app.getObject("kFJrN").then(function (cube) {
+    //               cube.getLayout().then(function (layout) {
+
+
+    //           console.log(layout);
+
+
+    //         })
+    //       })
+    //         .catch(function (err) { console.log(err) })
+
+    //     });
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
