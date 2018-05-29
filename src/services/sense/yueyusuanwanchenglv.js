@@ -7,6 +7,11 @@ export default function yueyusuanwanchenglv(obj) {
 	$.each(obj.qHyperCube.qDataPages[0].qMatrix, function (key, value) {
 
 		var data_v = value[0].qNum;
+		if (data_v) {
+			var data_v2 = 1;
+		} else {
+			var data_v2 = 1 - data_v;
+		}
 		var data_v2 = 1 - data_v;
 		data[i] = {
 			"name": '完成',

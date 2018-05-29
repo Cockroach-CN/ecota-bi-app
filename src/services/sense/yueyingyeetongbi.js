@@ -6,13 +6,15 @@ export default function yueyingyeetongbi(obj) {
 
 	var i = 0;
 	var data_;
+	var subtext;
 	$.each(obj.qHyperCube.qDataPages[0].qMatrix, function (key, value) {
 		//百分比
 		data_ = value[0].qNum;
-
+		subtext = value[0].qText;
 	});
+
 	var yueyingyeetongbi = data_;
-	var subtext = data_ * 100 + '%';
+	//var subtext = yueyingyeetongbi * 100 + '%';
 	var data = new Array();
 
 	if (yueyingyeetongbi > 0 || yueyingyeetongbi == 0) {

@@ -18,16 +18,10 @@ const groups = [{
         imageUrl: "images/pie2.png",
         lines: [{
             key: "1-1-1",
-            charts: [keys.BMSQW, keys.UMCTV],
+            charts: [keys.LVWMJQG, keys.UMCTV],
         }, {
             key: "1-1-2",
-            charts: [keys.HYQJJ],
-        }, {
-            key: "1-1-3",
-            charts: [keys.KFJRN],
-        }, {
-            key: "1-1-4",
-            charts: [keys.BMSQW],
+            charts: [keys.UMCTV],
         }],
     },
     {
@@ -37,10 +31,10 @@ const groups = [{
         imageUrl: "images/line.png",
         lines: [{
             key: "1-2-1",
-            charts: [keys.KFJRN],
+            charts: [keys.BMSQW, keys.HYQJJ],
         }, {
             key: "1-2-2",
-            charts: [keys.HYXRDW, keys.KFJRN],
+            charts: [keys.HYQJJ],
         }],
     },
     {
@@ -50,10 +44,7 @@ const groups = [{
         imageUrl: "images/bar.png",
         lines: [{
             key: "1-3-1",
-            charts: [keys.UMCTV, keys.KFJRN],
-        }, {
-            key: "1-3-2",
-            charts: [keys.HYQJJ],
+            charts: [keys.HYXRDW],
         }],
     }, {
         key: "1-4",
@@ -62,10 +53,10 @@ const groups = [{
         imageUrl: "images/scatter.png",
         lines: [{
             key: "1-4-1",
-            charts: [keys.HYQJJ, keys.HYXRDW],
+            charts: [keys.EEUDGE, keys.LYJSJYJ],
         }, {
             key: "1-4-2",
-            charts: [keys.EEUDGE],
+            charts: [keys.LYJSJYJ],
         }],
     }
     ]
@@ -80,7 +71,7 @@ const groups = [{
         imageUrl: "images/pie.png",
         lines: [{
             key: "2-1-1",
-            charts: [keys.BMSQW, keys.EEUDGE],
+            charts: [keys.KFJRN],
         }],
     },
     {
@@ -99,52 +90,46 @@ const groups = [{
 
 
 const filters = [{
-    key: "brand",
-    name: "品牌",
-    type: "btn",
-    class: "list",
-    options: [{
-        key: "xiabu",
-        name: "呷哺"
-    },
-    {
-        key: "zouzou",
-        name: "凑凑"
-    },
-    ]
-}, {
-    key: "market",
+    key: "区域市场名称",
     name: "市场",
     type: "btn",
     class: "both",
     options: [{
-        key: "A",
-        name: "A市场"
+        key: "北京市场",
+        name: "北京市场"
     },
     {
-        key: "B",
-        name: "B市场"
+        key: "东北市场",
+        name: "东北市场"
     },
     {
-        key: "C",
-        name: "C市场"
+        key: "华北市场",
+        name: "华北市场"
     },
     {
-        key: "D",
-        name: "D市场"
+        key: "华南市场",
+        name: "华南市场"
     },
     {
-        key: "E",
-        name: "E市场"
+        key: "华东市场",
+        name: "华东市场"
     },
     {
-        key: "F",
-        name: "F市场"
+        key: "华中市场",
+        name: "华中市场"
     },
-    ],
+    {
+        key: "天津市场",
+        name: "天津市场"
+    },
+    {
+        key: "全国合计",
+        name: "全国合计"
+    },
+    ]
 }, {
-    key: "time",
-    name: "时间",
+    key: "营业日期",
+    name: "营业日期",
     type: "time",
     class: "both",
 }];

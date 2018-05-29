@@ -122,7 +122,15 @@ class Index extends React.Component {
                     <Flex.Item>
                         <Button type="ghost"
                             onClick={() => {
-                                this.state.options = o2o(this.state.bak);
+                                // this.state.options = o2o(this.state.bak);
+                                Object.keys(this.state.options).map(key => {
+                                    if (this.state.options[key].operate_type === "btn") {
+                                        this.state.options[key].value = [];
+                                    } else if (this.state.options[key].operate_type === "time") {
+                                        this.state.options[key].value = "";
+                                    }
+                                })
+                                console.log(this.state.options);
                                 this.setState(this.state);
                             }} >
                             重置</Button>
