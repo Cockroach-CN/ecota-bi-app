@@ -7,6 +7,7 @@ import yuepingxiaopaiming from "./yuepingxiaopaiming.js";
 import yueyingkehuanbi from "./yueyingkehuanbi.js";
 import yueyingketongbi from "./yueyingketongbi.js";
 import yueyingyeetongbi from "./yueyingyeetongbi.js";
+import kpi from "./kpi.js";
 import guolv from "./guolv.js";
 
 export default function qsensedata(id, params) {
@@ -67,7 +68,7 @@ export default function qsensedata(id, params) {
 
 
 	var config = {
-		host: 'nan',
+		host: 'localhost',
 		//origin: 'http://localhost',
 		rejectUnauthorized: false,
 		isSecure: true
@@ -226,6 +227,12 @@ export default function qsensedata(id, params) {
 						case "kFJrN":
 							return huiyuankapaiming(layout);
 							break;
+						case "ZCVjxV":
+							return huiyuankapaiming(layout);
+							break;
+						case "JWwayJ":
+							return kpi(layout);
+							break;
 						case "BmsqW":
 							return yueyingketongbi(layout);
 							break;
@@ -241,11 +248,15 @@ export default function qsensedata(id, params) {
 						case "LYJsJyJ":
 							return yuedachenglv(layout);
 							break;
+						case "QUVTVG":
+							return yuedachenglv(layout);
+							break;
 						case "LvWmjQg":
 							return yueyingyeetongbi(layout);
 							break;
 						case "umCTV":
 							return yueyusuanwanchenglv(layout);
+							break;
 						default:
 							break;
 					}

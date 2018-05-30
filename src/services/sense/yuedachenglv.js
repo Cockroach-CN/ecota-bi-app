@@ -56,15 +56,17 @@ export default function yuedachenglv(obj) {
 			}
 		},
 		grid: {
-			left: '3%',
-			right: '3%',
-			bottom: '22%',
+			left: '2%',
+			right: '2%',
+			bottom: '10%',
 			top: '20%',
+			width: '100%',
+			//height: 200,
 			containLabel: true
 		},
 		legend: {
 			data: ['销售额', '预算额', '达成率'],
-			bottom: '20px'
+			bottom: '5%'
 		},
 		xAxis: [{
 			type: 'category',
@@ -76,8 +78,10 @@ export default function yuedachenglv(obj) {
 				show: false
 			},
 			axisLabel: {
-				margin: 22,
+				margin: 10,
 				fontSize: 10,
+				rotate: 45,
+				fontWeight: 'bold'
 			},
 			axisTick: {
 				show: false

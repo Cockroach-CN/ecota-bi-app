@@ -6,14 +6,15 @@ export default function yueyingketongbi(obj) {
 	var i = 0;
 	var data = new Array();
 	$.each(obj.qHyperCube.qDataPages[0].qMatrix, function (key, value) {
-
-		data[i] = {
-			"date": value[0].qText,
-			"turnover": value[1].qNum,
-			"people": value[2].qNum
-		};
+		var turnover_ =
+			data[i] = {
+				"date": value[0].qText,
+				"turnover": (value[1].qNum * 100).toFixed(2),
+				"people": (value[2].qNum * 100).toFixed(2)
+			};
 		i++;
 	});
+	//console.log(JSON.stringify(data));
 	var yueyingketongbi = data;
 	//data[i]={"date":value[0].qText,"turnover":value[1].qNum,"people":value[2].qNum};
 	var date = new Array();
@@ -53,13 +54,16 @@ export default function yueyingketongbi(obj) {
 			}
 		},
 		grid: {
-			top: 80,
-			left: 50,
-			bottom: 85
+			left: '2%',
+			right: '2%',
+			bottom: '10%',
+			top: '20%',
+			width: '100%',
+			containLabel: true
 		},
 		legend: {
 			data: ['营业额', '客流'],
-			bottom: '20px',
+			bottom: '5%',
 		},
 		xAxis: [{
 			type: 'category',
@@ -71,8 +75,10 @@ export default function yueyingketongbi(obj) {
 				show: false
 			},
 			axisLabel: {
-				margin: 22,
+				margin: 10,
 				fontSize: 10,
+				rotate: 45,
+				fontWeight: 'bold'
 			},
 			axisTick: {
 				show: false
@@ -81,6 +87,9 @@ export default function yueyingketongbi(obj) {
 		}],
 		yAxis: [{
 			type: 'value',
+			min: 0,
+			max: 200,
+			interval: 40,
 			axisLabel: {
 				formatter: '{value} %',
 				margin: 12,

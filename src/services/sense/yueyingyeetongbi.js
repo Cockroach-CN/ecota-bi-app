@@ -40,7 +40,7 @@ export default function yueyingyeetongbi(obj) {
 			text: '当月营业额同比增长率',
 			textStyle: {
 				color: '#000',
-				fontSize: 15,
+				fontSize: 17,
 				// fontWeight:700,
 				// width:100/dayMonthStep+'%',
 				// height:'100%',
@@ -55,7 +55,7 @@ export default function yueyingyeetongbi(obj) {
 			},
 			// left:(7.2-titleLength*1.06+i*100/dayMonthStep)+'%',
 			left: 'center',
-			top: '50%'
+			top: '37%'
 		},
 		//		    tooltip: {
 		//		        trigger: 'item',
@@ -71,8 +71,8 @@ export default function yueyingyeetongbi(obj) {
 			{
 				name: '月营业额可比同比',
 				type: 'pie',
-				center: ['50%', '60%'],
-				radius: ['50%', '60%'],
+				center: ['50%', '50%'],
+				radius: ['70%', '80%'],
 				//		            label: {
 				//		                normal: {
 				//		                   show: true,

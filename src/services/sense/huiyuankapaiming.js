@@ -24,7 +24,7 @@ export default function huiyuankapaiming(obj) {
 		title: {
 			//show:'true',
 			text: '会员卡售卡排名',
-			subtext: '20180523',
+			//subtext: '20180523',
 			left: 'center',
 			//left:'5%',
 			//top:'1%',
@@ -35,10 +35,11 @@ export default function huiyuankapaiming(obj) {
 			},
 		},
 		grid: {
-			top: '10%',
-			left: '15%',
+			top: '15%',
+			left: '10%',
 			right: '5%',
-			bottom: '23%',
+			bottom: '20%',
+			height: "70%",
 			containLabel: false
 		},
 		legend: {

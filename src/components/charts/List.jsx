@@ -136,7 +136,7 @@ class Panel extends React.Component {
             <div className="info-tab-content">
                 {headers.length ?
                     <div className="content-header">
-                        {headers.map((header, i) => <div>
+                        {headers.map((header, i) => <div key={i}>
                             <p>{header.name}</p>
                             <span>{header.value}</span>
                         </div>)}

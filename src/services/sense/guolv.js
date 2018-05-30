@@ -11,6 +11,11 @@ export default function guolv(params) {
 	var sc = params.区域市场名称;
 	var md = params.门店名称;
 	var yyrq = params.营业日期;
+
+	var yearStr = yyrq.substring(0, 4);//销售年 
+	var monthStr = yyrq.substring(4, 6);//营业月份
+	var dayStr = yyrq.substring(6, 9);//营业日
+
 	var sc_values = new Array();
 	var md_values = new Array();
 	var yyrq_values = new Array();
@@ -63,86 +68,41 @@ export default function guolv(params) {
 		isSecure: true
 	};
 
-
-
-
-	qsocks.Connect(config)
-		.then(function (global) {
-			// console.log(global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462'));
-			return global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')
-		}).then(async (app) => {
-			// console.log(app);
-
-			var _data = null;
-			var _data1 = null;
-			var _data2 = null;
-			var _data3 = null;
-			var _data4 = null;
-			var _data5 = null;
-			var _data6 = null;
-			var _data7 = null;
-
-
-
-			var _data1 = await app.clearAll(false).then(async (cube) => {
-				return _data1;
+	qsocks.Connect(config).then(function (global) {
+		// console.log(global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462'));
+		return global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')
+	}).then(async (app) => {
+		await app.clearAll(false);
+		if (sc_values && sc_values.length > 0) {
+			await app.getField("区域市场名称").then(async (field) => {
+				await field.selectValues(sc_values, false, false);
 			}).catch(function (err) {
-				console.log(err)
+				field.selectValues(sc_values, false, false);
 			});
-
-
-
-
-			var _data2 = await app.getField("区域市场名称").then(async (field) => {
-
-				var _data3 = await field.selectValues(sc_values, false, false).then(function (layout) {
-
-					return _data3;
-
-				})
-				//console.log(field);
-				return _data2;
+		}
+		if (md_values && md_values.length > 0) {
+			await app.getField("门店名称").then(async (field) => {
+				await field.selectValues(md_values, false, false);
 			}).catch(function (err) {
-				console.log(err);
-
-				field.selectValues(sc_values, false, false).then(function (layout) {
-
-					// console.log( layout);
-					return _data3;
-
-				})
-
+				field.selectValues(md_values, false, false);
 			});
+		}
+		if (yearStr) {
+			await app.getField("销售年").then(async (field) => {
+				await field.select(yearStr, false, 0);
+			}).catch(function (err) { console.log(err) });
+		}
 
+		if (monthStr) {
+			await app.getField("营业月份").then(async (field) => {
+				await field.select(monthStr, false, 0);
+			}).catch(function (err) { console.log(err) });
+		}
 
-			var _data4 = await app.getField("门店名称").then(async (field) => {
-
-				var _data5 = await field.selectValues(md_values, false, false).then(function (layout) {
-					return _data5;
-				})
-				return _data4;
-			}).catch(function (err) {
-				console.log(err);
-
-
-				field.selectValues(md_values, false, false).then(function (layout) {
-					return _data5;
-				})
-			});
-
-			var _data7 = await app.getField("营业日期").then(async (field) => {
-
-				var _data7 = await field.select(yyrq, false, 0).then(function (layout) {
-
-					return _data7;
-
-				})
-				// return _data6;
-			}).catch(function (err) {
-				console.log(err)
-			});
-
-
-			// console.log("--------------");
-		});
+		if (darStr) {
+			await app.getField("营业日").then(async (field) => {
+				await field.select(dayStr, false, 0);
+			}).catch(function (err) { console.log(err) });
+		}
+	});
 }
