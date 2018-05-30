@@ -1,6 +1,6 @@
 ﻿import qsocks from "qsocks";
 
-export default function guolv(params) {
+export default async function guolv(params) {
 
 	var keys = new Array();
 	for (var key in params) {
@@ -68,7 +68,7 @@ export default function guolv(params) {
 		isSecure: true
 	};
 
-	qsocks.Connect(config).then(function (global) {
+	return qsocks.Connect(config).then(function (global) {
 		// console.log(global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462'));
 		return global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')
 	}).then(async (app) => {
