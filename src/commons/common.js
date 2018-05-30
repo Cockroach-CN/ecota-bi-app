@@ -1,5 +1,6 @@
-
-import { CSSProperties } from "react";
+import {
+    CSSProperties
+} from "react";
 
 const classList = (...classNames) => {
     if (classNames && classNames.length > 0) {
@@ -74,6 +75,7 @@ const PAGEMAP = {
 
 export {
     o2o,
+    getType,
     PAGEMAP,
     classList,
 }

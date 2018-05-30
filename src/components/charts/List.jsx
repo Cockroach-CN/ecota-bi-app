@@ -9,8 +9,8 @@ import {
 import echarts from "echarts";
 import Filter from "../elements/Filter.jsx";
 import { NavBar } from "../elements/Common.jsx";
-import { PAGEMAP } from "../../commons/common.js";
-import { getTabData } from "../../services/service.js";
+import { PAGEMAP, getType } from "../../commons/common.js";
+import { getTabData, getHeaderData } from "../../services/service.js";
 import "./Style.less";
 
 const { groups } = window.settings;
@@ -86,6 +86,7 @@ class Panel extends React.Component {
             loading: false,
             unionkey: Math.random(),
             datas: lines,
+            headers: [],
         }
     }
 
@@ -105,6 +106,12 @@ class Panel extends React.Component {
         const width = document.body.clientWidth;
         try {
             Toast.loading();
+            if (tab.header) {
+                getHeaderData(tab.header, opts).then(result => {
+                    var type = getType(result);
+                    this.setState({ headers: type === "array" ? result : [] });
+                });
+            }
             const datas = await getTabData(tab, opts);
             datas.map((data, di) => data.options.map((option, oi) => {
                 const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
@@ -124,10 +131,17 @@ class Panel extends React.Component {
 
     render() {
         const { tab, onLarge } = this.props;
-        const { datas, unionkey } = this.state;
+        const { datas, headers, unionkey } = this.state;
         return (
             <div className="info-tab-content">
-                <div className="content-header">{tab.header}</div>
+                {headers.length ?
+                    <div className="content-header">
+                        {headers.map((header, i) => <div>
+                            <p>{header.name}</p>
+                            <span>{header.value}</span>
+                        </div>)}
+                    </div> : undefined
+                }
                 {datas.map((data, di) =>
                     <Carousel key={data.key} style={styleTabContent} dots={(data.charts || []).length > 1 ? true : false}>
                         {(data.charts || []).map((o, ci) =>

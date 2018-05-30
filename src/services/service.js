@@ -30,7 +30,7 @@ const getTabData = async (tab, opts) => {
             resolve(datas);
         });
     }).then(r => {
-        console.log(r);
+        // console.log(r);
         return r;
     });
 }
@@ -38,6 +38,14 @@ const getTabData = async (tab, opts) => {
 const getChartData = (key, opts) => {
     var params = getParams(opts);
 
+    return get_sense_data(key, params).then(r => {
+        // console.log(r);
+        return r;
+    });
+}
+
+const getHeaderData = (key, opts) => {
+    var params = getParams(opts);
     return get_sense_data(key, params).then(r => {
         console.log(r);
         return r;
@@ -59,6 +67,7 @@ const getParams = (opts) => {
 
 
 export {
+    getHeaderData,
     getTabData,
     getChartData,
 };
