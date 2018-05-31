@@ -29,15 +29,17 @@ class Index extends React.Component {
     async getData() {
         const { ckey } = this.props.options;
         try {
-            Toast.loading();
+            Toast.loading(null, 1);
             const data = await getChartData(ckey, this.state.params);
             const width = document.body.clientWidth;
             const dom = document.getElementById("chart");
-            dom.style.width = width + "px";
-            const chart = echarts.init(dom);
-            chart.setOption(data);
+            if (dom && data) {
+                dom.style.width = width + "px";
+                const chart = echarts.init(dom);
+                chart.setOption(data);
+            }
         } catch (e) {
-            console.error(e);
+            // console.error(e);
             Toast.fail("加载失败！");
         } finally {
             Toast.hide();

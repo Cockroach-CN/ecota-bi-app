@@ -105,7 +105,7 @@ class Panel extends React.Component {
         const { unionkey } = this.state;
         const width = document.body.clientWidth;
         try {
-            Toast.loading();
+            Toast.loading(null, 1);
             if (tab.header) {
                 getHeaderData(tab.header, opts).then(result => {
                     var type = getType(result);
@@ -113,16 +113,16 @@ class Panel extends React.Component {
                 });
             }
             const datas = await getTabData(tab, opts);
-            datas.map((data, di) => data.options.map((option, oi) => {
+            (datas || []).map((data, di) => (data.options || []).map((option, oi) => {
                 const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
-                if (dom) {
+                if (dom && option) {
                     dom.style.width = width - 30 + "px";
                     const chart = echarts.init(dom);
                     chart.setOption(option);
                 }
             }));
         } catch (e) {
-            console.error(e);
+            // console.error(e);
             Toast.fail("加载失败！");
         } finally {
             Toast.hide();
@@ -142,7 +142,7 @@ class Panel extends React.Component {
                         </div>)}
                     </div> : undefined
                 }
-                {datas.map((data, di) =>
+                {(datas || []).map((data, di) =>
                     <Carousel key={data.key} style={styleTabContent} dots={(data.charts || []).length > 1 ? true : false}>
                         {(data.charts || []).map((o, ci) =>
                             <div key={ci} className="content-chart">
