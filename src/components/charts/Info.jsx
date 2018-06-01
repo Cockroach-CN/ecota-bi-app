@@ -49,7 +49,7 @@ class Index extends React.Component {
     render() {
         const { params, random, showModal } = this.state;
         return <div id="container">
-            <NavBar
+            <NavBar isInfo
                 onLeftClick={() => this.props.setPage(PAGEMAP.LIST, true)}
                 onRightClick={() => this.setState({ showModal: true })} />
             <div id="chart" style={styleContent} className="info-tab-content"></div>

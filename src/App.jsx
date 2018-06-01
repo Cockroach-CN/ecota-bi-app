@@ -68,19 +68,25 @@ class App extends React.Component {
     }
 
     setPage(page, back) {
-
+        console.log(page);
         let timeout = 0;
         if (back) {
             timeout = 150;
             var container = document.getElementById("container");
-            if (container) { container.className = "animated slideOutRight" };
+            if (container) {
+                const className = "animated " + (page === PAGEMAP.LIST ? "zoomOut" : "slideOutRight");
+                container.className = className;
+            };
         }
         setTimeout(() => {
             this.state.page = page;
             this.setState(this.state);
             if (!back) {
                 var container = document.getElementById("container");
-                if (container) { container.className = "animated slideInLeft" };
+                if (container) {
+                    const className = "animated " + (page === PAGEMAP.INFO ? "zoomIn" : "slideInLeft");
+                    container.className = className;
+                };
             }
         }, timeout);
     }
