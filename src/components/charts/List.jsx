@@ -50,7 +50,10 @@ class Index extends React.Component {
                 page={String(options.tkey)}
                 prerenderingSiblingsNumber={0}
                 renderTab={tab => <div>{tab.title}</div>}
-                onChange={tab => setOptions({ tkey: tab.key }, () => this.setState({ random: Math.random() }))}>
+                onChange={tab => {
+                    setOptions({ tkey: tab.key });
+                    this.setState({ random: Math.random() });
+                }}>
                 {settingTabs.map(tab =>
                     <Panel key={tab.key}
                         tab={tab}
@@ -105,7 +108,7 @@ class Panel extends React.Component {
         const { unionkey } = this.state;
         const width = document.body.clientWidth;
         try {
-            Toast.loading(null, 1);
+            Toast.loading();
             if (tab.header) {
                 getHeaderData(tab.header, opts).then(result => {
                     var type = getType(result);
