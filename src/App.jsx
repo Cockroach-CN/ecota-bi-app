@@ -68,7 +68,6 @@ class App extends React.Component {
     }
 
     setPage(page, back) {
-        console.log(page);
         let timeout = 0;
         if (back) {
             timeout = 150;
