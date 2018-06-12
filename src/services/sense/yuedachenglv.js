@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 
-export default function yuedachenglv(obj) {
+export default function yuedachenglv(obj, text) {
 
 	//var myChart = echarts.init(document.getElementById('QV06'));
 
@@ -23,16 +23,17 @@ export default function yuedachenglv(obj) {
 	var turnover = new Array();
 	var yusuan = new Array();
 	var dachenglv = new Array();
-	for (var i = 0; i < yuedachenglv.length; i++) {
+	for (var i = 0; i < 5; i++) {
 		name[i] = yuedachenglv[i].name;
-		turnover[i] = yuedachenglv[i].turnover / 1000000;
-		yusuan[i] = yuedachenglv[i].yusuan / 1000000;
-		dachenglv[i] = yuedachenglv[i].dachenglv * 100;
+		turnover[i] = ((yuedachenglv[i].turnover || 0) / 1000000).toFixed(2);
+		yusuan[i] = ((yuedachenglv[i].yusuan || 0) / 1000000).toFixed(2);
+		dachenglv[i] = ((yuedachenglv[i].dachenglv || 0) * 100).toFixed(2);
 	}
 	var option = {
+		animation: false,
 		title: {
 			//show:'true',
-			text: '当月达成率',
+			text: text,
 			subtext: '',
 			left: 'center',
 			//left:'5%',
@@ -117,8 +118,8 @@ export default function yuedachenglv(obj) {
 				type: 'value',
 				name: '达成率',
 				min: 0,
-				max: 20,
-				interval: 4,
+				max: 150,
+				interval: 30,
 				axisLabel: {
 					formatter: '{value} %',
 					fontSize: 10,

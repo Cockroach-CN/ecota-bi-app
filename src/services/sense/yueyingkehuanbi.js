@@ -9,8 +9,8 @@ export default function yueyingkehuanbi(obj) {
 
 		data_[i] = {
 			"date": value[0].qText,
-			"turnover": value[1].qNum,
-			"people": value[2].qNum
+			"turnover": ((value[1].qNum || 0) * 100).toFixed(2),
+			"people": ((value[2].qNum || 0) * 100).toFixed(2)
 		};
 		i++;
 
@@ -21,18 +21,26 @@ export default function yueyingkehuanbi(obj) {
 	var turnover = new Array();
 	var people = new Array();
 
-	for (var i = 0; i < yueyingkehuanbi.length; i++) {
+	var date_ = new Array();
+	var turnover_ = new Array();
+	var people_ = new Array();
+	for (var i = 0; i < 30; i++) {
 
 		date[i] = yueyingkehuanbi[i].date;
 		turnover[i] = yueyingkehuanbi[i].turnover;
 		people[i] = yueyingkehuanbi[i].people;
 	}
+	date_ = [date[29], date[22], date[15], date[8]];
+	turnover_ = [turnover[29], turnover[22], turnover[15], turnover[8]];
+	people_ = [people[29], people[22], people[15], people[8]];
+
 	var option = {
+		animation: false,
 		backgroundColor: '#fff',
 		title: {
 			text: '近一个月日营业额、客流按周可比环比',
 			subtext: '',
-			top: '15',
+			top: '5%',
 			textStyle: {
 				color: '#666666',
 				fontSize: 14,
@@ -53,17 +61,21 @@ export default function yueyingkehuanbi(obj) {
 			}
 		},
 		grid: {
-			top: 70,
-			left: 50,
-			bottom: 85
+			left: '2%',
+			right: '2%',
+			bottom: '10%',
+			top: '15%',
+			width: '90%',
+			height: '80%',
+			containLabel: true
 		},
 		legend: {
 			data: ['营业额', '客流'],
-			bottom: '20px',
+			bottom: '3%',
 		},
 		xAxis: [{
 			type: 'category',
-			data: date,
+			data: date_,
 			axisPointer: {
 				type: 'shadow'
 			},
@@ -71,8 +83,10 @@ export default function yueyingkehuanbi(obj) {
 				show: false
 			},
 			axisLabel: {
-				margin: 22,
+				margin: 10,
 				fontSize: 10,
+				rotate: 15,
+				fontWeight: 'bold'
 			},
 			axisTick: {
 				show: false
@@ -81,6 +95,7 @@ export default function yueyingkehuanbi(obj) {
 		}],
 		yAxis: [{
 			type: 'value',
+
 			axisLabel: {
 				formatter: '{value} %',
 				margin: 12,
@@ -103,7 +118,7 @@ export default function yueyingkehuanbi(obj) {
 		series: [{
 			name: '营业额',
 			type: 'line', //折线图
-			data: turnover,
+			data: turnover_,
 			smooth: true,
 			lineStyle: {
 				normal: {
@@ -147,7 +162,7 @@ export default function yueyingkehuanbi(obj) {
 					position: 'bottom'
 				}
 			},
-			data: people,
+			data: people_,
 
 
 		}]

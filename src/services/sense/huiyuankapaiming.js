@@ -7,7 +7,7 @@ export default function huiyuankapaiming(obj) {
 
 		data[i] = {
 			'name': value[0].qText,
-			"value": (value[1].qNum * 100).toFixed(2)
+			"value": ((value[1].qNum || 0) * 100).toFixed(2)
 		};
 		i++;
 	});
@@ -20,7 +20,7 @@ export default function huiyuankapaiming(obj) {
 		value[i] = huiyuankapaiming[i].value;
 	}
 	var option = {
-		animation: true,
+		animation: false,
 		title: {
 			//show:'true',
 			text: '会员卡售卡排名',

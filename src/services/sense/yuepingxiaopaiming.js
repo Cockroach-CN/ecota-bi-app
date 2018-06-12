@@ -5,10 +5,10 @@ export default function yuepingxiaopaiming(obj) {
 	var i = 0;
 	var data = new Array();
 	$.each(obj.qHyperCube.qDataPages[0].qMatrix, function (key, value) {
-
+		var value_ = Number(value[1].qNum) ? value[1].qNum.toFixed(2) : 0;
 		data[i] = {
 			"name": value[0].qText,
-			"value": value[1].qNum
+			"value": value_
 		};
 		i++;
 	});
@@ -23,6 +23,7 @@ export default function yuepingxiaopaiming(obj) {
 		value[i] = yuepingxiaopaiming[i].value;
 	}
 	var option = {
+		animation: false,
 		backgroundColor: '#fff',
 		title: {
 			text: '近一个月区域市场坪效排名',
@@ -89,10 +90,10 @@ export default function yuepingxiaopaiming(obj) {
 		series: [{
 			name: '坪效排名',
 			type: 'bar',
-			//data:value,
-			data: [80, 360, 200, 334, 260, 330, 220, 100, 150, 250].sort(function (x, y) {
-				return y - x;
-			}),
+			data: value,
+			//data: [80, 360, 200, 334, 260, 330, 220, 100, 150, 250].sort(function (x, y) {
+			//return y - x;
+			//}),
 			barWidth: 12,
 			itemStyle: {
 				normal: {

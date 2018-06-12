@@ -62,21 +62,32 @@ export default async function guolv(params) {
 
 
 	var config = {
-		host: 'nan',
+		//host: 'biserver',
+		//host: 'nan',
+		host: '124.205.55.164',
+		//port: "4747",
+		//host: '192.168.0.251',
 		//origin: 'http://localhost',
 		rejectUnauthorized: false,
-		isSecure: true
+		isSecure: false
 	};
 
+
+
+
 	return qsocks.Connect(config).then(function (global) {
+
 		// console.log(global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462'));
-		return global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')
+		//return global.openDoc('a3fe3c06-1423-4d2c-9495-a677e0f6e462')//141ad079-eadf-493e-b2d4-6f5fb846df1e
+		return global.openDoc('141ad079-eadf-493e-b2d4-6f5fb846df1e')//'141ad079-eadf-493e-b2d4-6f5fb846df1e'
 	}).then(async (app) => {
+		console.log("-----------------");
 		await app.clearAll(false);
 		if (sc_values && sc_values.length > 0) {
 			await app.getField("区域市场名称").then(async (field) => {
 				await field.selectValues(sc_values, false, false);
 			}).catch(function (err) {
+				console.log(err);
 				field.selectValues(sc_values, false, false);
 			});
 		}
@@ -84,6 +95,7 @@ export default async function guolv(params) {
 			await app.getField("门店名称").then(async (field) => {
 				await field.selectValues(md_values, false, false);
 			}).catch(function (err) {
+				console.log(err);
 				field.selectValues(md_values, false, false);
 			});
 		}
@@ -99,10 +111,10 @@ export default async function guolv(params) {
 			}).catch(function (err) { console.log(err) });
 		}
 
-		if (darStr) {
-			await app.getField("营业日").then(async (field) => {
-				await field.select(dayStr, false, 0);
+		if (dayStr) {
+			await app.getField("销售日期").then(async (field) => {
+				await field.select(yyrq, false, 0);
 			}).catch(function (err) { console.log(err) });
 		}
-	});
+	}).catch(function (err) { console.log(err) });
 }

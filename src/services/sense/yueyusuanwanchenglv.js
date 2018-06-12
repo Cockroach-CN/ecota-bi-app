@@ -28,7 +28,7 @@ export default function yueyusuanwanchenglv(obj) {
 
 
 	var option = {
-		animation: true,
+		animation: false,
 		title: {
 			show: true,
 			text: '当月预算完成率',
@@ -42,7 +42,7 @@ export default function yueyusuanwanchenglv(obj) {
 			},
 			// left:(7.2-titleLength*1.06+i*100/dayMonthStep)+'%',
 			left: 'center',
-			top: '35%'
+			top: '40%'
 		},
 		tooltip: {
 			trigger: 'item',
@@ -59,7 +59,7 @@ export default function yueyusuanwanchenglv(obj) {
 				name: '当月预算完成率',
 				type: 'pie',
 				center: ['50%', '50%'],
-				radius: ['70%', '80%'],
+				radius: ['75%', '85%'],
 				label: {
 					normal: {
 						show: true,
@@ -68,7 +68,7 @@ export default function yueyusuanwanchenglv(obj) {
 						fontSize: 18,
 						formatter: '{b}: {d}%',
 						position: 'center',
-						padding: [35, 4, 5, 6]
+						padding: [37, 5, 5, 6]
 					}
 				},
 				labelLine: {

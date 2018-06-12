@@ -34,7 +34,7 @@ export default function yueyingyeetongbi(obj) {
 		}];
 	}
 	var option = {
-		animation: true,
+		animation: false,
 		title: {
 			show: true,
 			text: '当月营业额同比增长率',
@@ -55,7 +55,7 @@ export default function yueyingyeetongbi(obj) {
 			},
 			// left:(7.2-titleLength*1.06+i*100/dayMonthStep)+'%',
 			left: 'center',
-			top: '37%'
+			top: '45%'
 		},
 		//		    tooltip: {
 		//		        trigger: 'item',
@@ -72,7 +72,7 @@ export default function yueyingyeetongbi(obj) {
 				name: '月营业额可比同比',
 				type: 'pie',
 				center: ['50%', '50%'],
-				radius: ['70%', '80%'],
+				radius: ['75%', '85%'],
 				//		            label: {
 				//		                normal: {
 				//		                   show: true,

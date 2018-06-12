@@ -12,7 +12,7 @@ const date_formart = {
 
 const getTabData = async (tab, opts) => {
     var params = getParams(opts);
-    await guolv(params);
+    // await guolv(params);
 
     const datas = JSON.parse(JSON.stringify(tab.lines || []));
     return new Promise(function (resolve, reject) {
@@ -39,7 +39,7 @@ const getTabData = async (tab, opts) => {
 
 const getChartData = async (key, opts) => {
     var params = getParams(opts);
-    await guolv(params);
+    // await guolv(params);
 
     return get_sense_data(key, params).then(r => {
         // console.log(r);
@@ -49,11 +49,12 @@ const getChartData = async (key, opts) => {
 
 const getHeaderData = async (key, opts) => {
     var params = getParams(opts);
-    await guolv(params);
-    return get_sense_data(key, params).then(r => {
-        // console.log(r);
-        return r;
-    });
+    // await guolv(params);
+    // return get_sense_data(key, params).then(r => {
+    //     // console.log(r);
+    //     return r;
+    // });
+    return [];
 }
 
 const getParams = (opts) => {

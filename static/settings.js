@@ -1,16 +1,30 @@
 const keys = {
-    KFJRN: "kFJrN",
-    BMSQW: "BmsqW",
-    HYQJJ: "HyQJJ",
-    HYXRDW: "HyxrDw",
-    EEUDGE: "eeUdGe",
-    LYJSJYJ: "LYJsJyJ",
-    LVWMJQG: "LvWmjQg",
-    UMCTV: "umCTV",
-    ZCVJXV: "ZCVjxV",
-    HYpwwB: "HYpwwB",
-    JWWAYJ: "JWwayJ",
-    QUVTVG: "QUVTVG"
+    /* KFJRN: "kFJrN",
+     BMSQW: "BmsqW",
+     HYQJJ: "HyQJJ",
+     HYXRDW: "HyxrDw",
+     EEUDGE: "eeUdGe",
+     LYJSJYJ: "LYJsJyJ",
+     LVWMJQG: "LvWmjQg",
+     UMCTV: "umCTV",
+     ZCVJXV: "ZCVjxV",
+     HYpwwB: "HYpwwB",
+     JWWAYJ: "JWwayJ",
+     QUVTVG: "QUVTVG",
+     JWTSEW: "jWTseW"*/
+
+    ASPMZ: "aspMz",
+    ZHPKAX: "zhPKAx",
+    XKYSWDV: "xkySwdv",
+    WMEQTA: "WmeqTA",
+    EUKVCCR: "EUkVcCR",
+    LQXYY: "LQxYy",
+    XETJJSE: "xEtJjse",
+    JPSVJP: "JPSVjp",
+    ZFMU: "ZFMu",
+    JMDEPUQ: "JmDePuq",
+    BMVAVVU: "BMvAvVu",
+    MHJVYX: "MhJvYx"
 
 }
 const groups = [{
@@ -19,14 +33,17 @@ const groups = [{
     tabs: [{
         key: "1-1",
         name: "仪表盘",
-        header: keys.JWWAYJ,
+        //header: keys.JWWAYJ,//本地
+        header: keys.MHJVYX,
         imageUrl: "images/pie2.png",
         lines: [{
             key: "1-1-1",
-            charts: [keys.LVWMJQG, keys.UMCTV],
+            //charts: [keys.LVWMJQG, keys.UMCTV],//本地
+            charts: [keys.ASPMZ],
         }, {
             key: "1-1-2",
-            charts: [keys.UMCTV],
+            // charts: [keys.UMCTV],//本地
+            charts: [keys.ZHPKAX],
         }],
     },
     {
@@ -36,10 +53,12 @@ const groups = [{
         imageUrl: "images/line.png",
         lines: [{
             key: "1-2-1",
-            charts: [keys.BMSQW, keys.HYQJJ],
+            //charts: [keys.BMSQW, keys.HYQJJ],//本地
+            charts: [keys.XKYSWDV, keys.WMEQTA],
         }, {
             key: "1-2-2",
-            charts: [keys.HYQJJ],
+            //charts: [keys.HYQJJ],//本地
+            charts: [keys.WMEQTA],
         }],
     },
     {
@@ -48,7 +67,8 @@ const groups = [{
         imageUrl: "images/bar.png",
         lines: [{
             key: "1-3-1",
-            charts: [keys.HYXRDW],
+            // charts: [keys.HYXRDW, keys.JWTSEW],//本地
+            charts: [keys.EUKVCCR, keys.LQXYY],
         }],
     }, {
         key: "1-4",
@@ -56,10 +76,12 @@ const groups = [{
         imageUrl: "images/scatter.png",
         lines: [{
             key: "1-4-1",
-            charts: [keys.EEUDGE],
+            //charts: [keys.EEUDGE],//本地
+            charts: [keys.XETJJSE],
         }, {
             key: "1-4-2",
-            charts: [keys.LYJSJYJ, keys.QUVTVG],
+            // charts: [keys.LYJSJYJ, keys.QUVTVG],//本地
+            charts: [keys.JPSVJP, keys.ZFMU],
         }],
     }
     ]
@@ -73,7 +95,8 @@ const groups = [{
         imageUrl: "images/pie.png",
         lines: [{
             key: "2-1-1",
-            charts: [keys.KFJRN, keys.ZCVJXV],
+            // charts: [keys.KFJRN, keys.ZCVJXV],//本地
+            charts: [keys.JMDEPUQ, keys.BMVAVVU],
         }],
     },
     {
@@ -82,14 +105,14 @@ const groups = [{
         imageUrl: "images/pie.png",
         lines: [{
             key: "2-2-2",
-            charts: [keys.HYXRDW],
+            charts: [keys.BMVAVVU],
         }],
     },
     ]
 }
 ];
 
-
+//list 是列表页面显示    info是详情页面显示   both 是这两个页面都显示
 const filters = [{
     key: "区域市场名称",
     name: "市场",

@@ -9,8 +9,8 @@ export default function yueyingketongbi(obj) {
 		var turnover_ =
 			data[i] = {
 				"date": value[0].qText,
-				"turnover": (value[1].qNum * 100).toFixed(2),
-				"people": (value[2].qNum * 100).toFixed(2)
+				"turnover": ((value[1].qNum || 0) * 100).toFixed(2),
+				"people": ((value[2].qNum || 0) * 100).toFixed(2)
 			};
 		i++;
 	});
@@ -21,18 +21,25 @@ export default function yueyingketongbi(obj) {
 	var turnover = new Array();
 	var people = new Array();
 
-	for (var i = 0; i < yueyingketongbi.length; i++) {
+	var date_ = new Array();
+	var turnover_ = new Array();
+	var people_ = new Array();
+	for (var i = 0; i < 30; i++) {
 
 		date[i] = yueyingketongbi[i].date;
 		turnover[i] = yueyingketongbi[i].turnover;
 		people[i] = yueyingketongbi[i].people;
 	}
+	date_ = [date[29], date[22], date[15], date[8]];
+	turnover_ = [turnover[29], turnover[22], turnover[15], turnover[8]];
+	people_ = [people[29], people[22], people[15], people[8]];
 	var option = {
+		animation: false,
 		backgroundColor: '#fff',
 		title: {
 			text: '近一个月日营业额、客流按周可比同比',
 			subtext: '',
-			top: '25',
+			top: '3%',
 			textStyle: {
 				color: '#666666',
 				fontSize: 14,
@@ -57,17 +64,18 @@ export default function yueyingketongbi(obj) {
 			left: '2%',
 			right: '2%',
 			bottom: '10%',
-			top: '20%',
-			width: '100%',
+			top: '15%',
+			width: '85%',
+			height: '80%',
 			containLabel: true
 		},
 		legend: {
 			data: ['营业额', '客流'],
-			bottom: '5%',
+			bottom: '3%',
 		},
 		xAxis: [{
 			type: 'category',
-			data: date,
+			data: date_,
 			axisPointer: {
 				type: 'shadow'
 			},
@@ -77,7 +85,7 @@ export default function yueyingketongbi(obj) {
 			axisLabel: {
 				margin: 10,
 				fontSize: 10,
-				rotate: 45,
+				rotate: 15,
 				fontWeight: 'bold'
 			},
 			axisTick: {
@@ -87,9 +95,9 @@ export default function yueyingketongbi(obj) {
 		}],
 		yAxis: [{
 			type: 'value',
-			min: 0,
-			max: 200,
-			interval: 40,
+			//min: -50,
+			//max: 200,
+			//interval: 50,
 			axisLabel: {
 				formatter: '{value} %',
 				margin: 12,
@@ -112,7 +120,7 @@ export default function yueyingketongbi(obj) {
 		series: [{
 			name: '营业额',
 			type: 'line', //折线图
-			data: turnover,
+			data: turnover_,
 			smooth: true,
 			lineStyle: {
 				normal: {
@@ -156,7 +164,7 @@ export default function yueyingketongbi(obj) {
 					position: 'bottom'
 				}
 			},
-			data: people
+			data: people_
 
 
 		}]
