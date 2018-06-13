@@ -2,6 +2,7 @@ import moment from "moment";
 import {
     get_sense_data
 } from "./fn.js";
+import guolv from "./sense/guolv";
 
 const date_formart = {
     year: "YYYY",
@@ -11,6 +12,7 @@ const date_formart = {
 
 const getTabData = async (tab, opts) => {
     var params = getParams(opts);
+    await guolv(params);
     const datas = JSON.parse(JSON.stringify(tab.lines || []));
     return new Promise(function (resolve, reject) {
         var promises = [];
@@ -37,6 +39,7 @@ const getTabData = async (tab, opts) => {
 
 const getChartData = async (key, opts) => {
     var params = getParams(opts);
+    await guolv(params);
     return get_sense_data(key, params).then(r => {
         // console.log(r);
         return r;
@@ -45,6 +48,7 @@ const getChartData = async (key, opts) => {
 
 const getHeaderData = async (key, opts) => {
     var params = getParams(opts);
+    await guolv(params);
     return get_sense_data(key, params).then(r => {
         // console.log(r);
         return r;
