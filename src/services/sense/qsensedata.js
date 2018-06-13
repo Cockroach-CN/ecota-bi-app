@@ -18,7 +18,6 @@ export default function qsensedata(id, params) {
 		keys.push(key);
 
 	}
-	//alert(params);
 	var sc = params.区域市场名称;
 	var md = params.门店名称;
 	var yyrq = params.营业日期;
@@ -232,49 +231,49 @@ export default function qsensedata(id, params) {
 					switch (id) {
 						//case "kFJrN":  //本地
 						case "JmDePuq":
-							return huiyuankapaiming(layout);//降序
+							return huiyuankapaiming(layout); //降序
 							break;
-						//case "ZCVjxV":
+							//case "ZCVjxV":
 						case "BMvAvVu":
 							return huiyuankapaiming(layout); //升序
 							break;
-						//case "JWwayJ":
+							//case "JWwayJ":
 						case "MhJvYx":
 							return kpi(layout);
 							break;
-						//case "BmsqW":
+							//case "BmsqW":
 						case "xkySwdv":
 							return yueyingketongbi(layout);
 							break;
-						//case "HyQJJ":
+							//case "HyQJJ":
 						case "WmeqTA":
 							return yueyingkehuanbi(layout);
 							break;
-						//case "HyxrDw":
+							//case "HyxrDw":
 						case "EUkVcCR":
 							return yuepingxiaopaiming(layout);
 							break;
-						//case "eeUdGe":
+							//case "eeUdGe":
 						case "xEtJjse":
 							return rileijidachenglv(layout);
 							break;
-						//case "LYJsJyJ":
+							//case "LYJsJyJ":
 						case "JPSVjp":
-							return yuedachenglv(layout, "当月达成率");//当月
+							return yuedachenglv(layout, "当月达成率"); //当月
 							break;
-						//case "QUVTVG":
+							//case "QUVTVG":
 						case "ZFMu":
-							return yuedachenglv(layout, "上月达成率");//上月
+							return yuedachenglv(layout, "上月达成率"); //上月
 							break;
-						//case "LvWmjQg":
+							//case "LvWmjQg":
 						case "aspMz":
 							return yueyingyeetongbi(layout);
 							break;
-						//case "umCTV":
+							//case "umCTV":
 						case "zhPKAx":
 							return yueyusuanwanchenglv(layout);
 							break;
-						//case "jWTseW":
+							//case "jWTseW":
 						case "LQxYy":
 							return pingxiaoqushi(layout);
 							break;

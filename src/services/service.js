@@ -1,8 +1,6 @@
 import moment from "moment";
-import {
-    get_sense_data
-} from "./fn.js";
-import guolv from "./sense/guolv";
+import guolv from "./sense/guolv.js";
+import qsensedata from "./sense/qsensedata.js";
 
 const date_formart = {
     year: "YYYY",
@@ -12,7 +10,7 @@ const date_formart = {
 
 const getTabData = async (tab, opts) => {
     var params = getParams(opts);
-    await guolv(params);
+    await guolv_data(params);
     const datas = JSON.parse(JSON.stringify(tab.lines || []));
     return new Promise(function (resolve, reject) {
         var promises = [];
@@ -39,7 +37,7 @@ const getTabData = async (tab, opts) => {
 
 const getChartData = async (key, opts) => {
     var params = getParams(opts);
-    await guolv(params);
+    await guolv_data(params);
     return get_sense_data(key, params).then(r => {
         // console.log(r);
         return r;
@@ -48,7 +46,7 @@ const getChartData = async (key, opts) => {
 
 const getHeaderData = async (key, opts) => {
     var params = getParams(opts);
-    await guolv(params);
+    await guolv_data(params);
     return get_sense_data(key, params).then(r => {
         // console.log(r);
         return r;
@@ -66,6 +64,32 @@ const getParams = (opts) => {
         }
     });
     return params;
+}
+
+export function guolv_data(params) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            try {
+                resolve(guolv(params));
+            } catch (e) {
+                reject(e);
+            }
+        }.bind(this), 0);
+    })
+}
+
+function get_sense_data(key, params) {
+    // console.log(key, params);
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            try {
+                resolve(qsensedata(key, params));
+            } catch (e) {
+                reject(e);
+            }
+
+        }.bind(this), 0);
+    })
 }
 
 

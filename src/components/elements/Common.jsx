@@ -5,10 +5,10 @@ import "./Style.less";
 const NavBar = ({ isInfo, onLeftClick, onRightClick }) =>
     <div className="ecota-navbar">
         <div onClick={onLeftClick}>
-            <i style={{ fontSize: 20 }} className={isInfo ? "iconfont icon-suoxiao" : "iconfont icon-fanhui"}></i>
+            <i style={{ fontSize: 21 }} className={isInfo ? "iconfont icon-suoxiao" : "iconfont icon-fanhui"}></i>
         </div>
         <div onClick={onRightClick}>
-            <i style={{ fontSize: 20 }} className="iconfont icon-gengduo"></i>
+            <i style={{ fontSize: 21 }} className="iconfont icon-gengduo"></i>
         </div>
     </div>
 

@@ -49,6 +49,7 @@ class Index extends React.Component {
                 tabBarPosition="bottom"
                 page={String(options.tkey)}
                 prerenderingSiblingsNumber={0}
+                tabBarUnderlineStyle={{ display: "none" }}
                 renderTab={tab => <div>{tab.title}</div>}
                 onChange={tab => {
                     setOptions({ tkey: tab.key });
@@ -169,9 +170,14 @@ const styleTabContent = {
 }
 
 const styleFangda = {
-    fontSize: 26,
+    color: "#666666",
+    fontSize: 21,
     position: "absolute",
     right: "0.1rem",
     bottom: "0.1rem",
     zIndex: 99,
+}
+
+const styleTabTitle = {
+    color: "#666666",
 }
