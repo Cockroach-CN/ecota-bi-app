@@ -29,7 +29,7 @@ class Index extends React.Component {
     async getData() {
         const { ckey } = this.props.options;
         try {
-            Toast.loading(null, 10);
+            Toast.loading(null, 5);
             const data = await getChartData(ckey, this.state.params);
             const width = document.body.clientWidth;
             const dom = document.getElementById("chart");

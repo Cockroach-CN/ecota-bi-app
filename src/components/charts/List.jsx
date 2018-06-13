@@ -109,7 +109,7 @@ class Panel extends React.Component {
         const { unionkey } = this.state;
         const width = document.body.clientWidth;
         try {
-            Toast.loading(null, 10);
+            Toast.loading(null, 5);
             if (tab.header) {
                 getHeaderData(tab.header, opts).then(result => {
                     var type = getType(result);
