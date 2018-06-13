@@ -19,6 +19,9 @@
 .options-container {
     color: #333333;
     text-align: left;
+    &.last>div.options-time {
+        border-bottom: none;
+    }
     .segmented-group {
         float: right;
         width: 150px;
@@ -29,13 +32,14 @@
         }
     }
     .options-time {
+        padding-top: 0px;
         border-bottom: 1px solid #ddd;
         >div>div.am-list-item {
             padding: 0px;
         }
     }
     >div:first-child{
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         border-bottom: 1px solid #ddd;
     }
     >div {

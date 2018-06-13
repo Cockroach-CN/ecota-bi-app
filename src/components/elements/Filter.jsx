@@ -39,6 +39,7 @@ class Index extends React.Component {
     render() {
         const { visable, type, onClose, onOk } = this.props;
         const { options } = this.state;
+        const filterList = (filters || []).filter(f => f.class === type || f.class === "both");
         return <Modal popup
             maskClosable
             animationType="slide-up"
@@ -49,9 +50,9 @@ class Index extends React.Component {
                 onClose && onClose();
             }}>
             <WhiteSpace size="sm" />
-            {(filters || []).filter(f => f.class === type || f.class === "both").map((f, i) => {
+            {filterList.map((f, i) => {
                 if (options[f.key]) {
-                    return <div key={i} className="options-container">
+                    return <div key={i} className={`options-container ${i === (filterList.length - 1) && "last"}`}>
                         <div>
                             {f.name}
                             {f.type === "btn" ?
@@ -113,40 +114,36 @@ class Index extends React.Component {
                                 <List.Item arrow="horizontal">{TimeType[options[f.key].type]}</List.Item>
                             </DatePicker>
                         </div>}
-                        <WhiteSpace size="sm" />
                     </div>
                 }
             })}
-            <WingBlank size="sm">
-                <Flex>
-                    <Flex.Item>
-                        <Button type="ghost"
-                            onClick={() => {
-                                // this.state.options = o2o(this.state.bak);
-                                Object.keys(this.state.options).map(key => {
-                                    if (this.state.options[key].operate_type === "btn") {
-                                        this.state.options[key].value = [];
-                                    } else if (this.state.options[key].operate_type === "time") {
-                                        this.state.options[key].value = "";
-                                    }
-                                })
-                                console.log(this.state.options);
-                                this.setState(this.state);
-                            }} >
-                            重置</Button>
-                    </Flex.Item>
-                    <Flex.Item>
-                        <Button type="primary"
-                            onClick={() => {
-                                this.state.bak = o2o(this.state.options);
-                                this.setState(this.state);
-                                onOk && onOk(this.state.options);
-                            }} >
-                            确定</Button>
-                    </Flex.Item>
-                </Flex>
-            </WingBlank>
-            <WhiteSpace size="sm" />
+            <Flex>
+                <Flex.Item>
+                    <Button type="ghost"
+                        style={styleButtonLeft}
+                        onClick={() => {
+                            Object.keys(this.state.options).map(key => {
+                                if (this.state.options[key].operate_type === "btn") {
+                                    this.state.options[key].value = [];
+                                } else if (this.state.options[key].operate_type === "time") {
+                                    this.state.options[key].value = "";
+                                }
+                            })
+                            this.setState(this.state);
+                        }} >
+                        重置</Button>
+                </Flex.Item>
+                <Flex.Item style={{ marginLeft: 0 }}>
+                    <Button type="primary"
+                        style={styleButtonRight}
+                        onClick={() => {
+                            this.state.bak = o2o(this.state.options);
+                            this.setState(this.state);
+                            onOk && onOk(this.state.options);
+                        }} >
+                        确定</Button>
+                </Flex.Item>
+            </Flex>
         </Modal>
     }
 
@@ -157,5 +154,15 @@ const styleTagRight = {
     marginTop: "-0.05rem",
 }
 
+const styleButtonLeft = {
+    margin: "1px 0 1px 1px",
+    height: "38px",
+    lineHeight: "38px",
+}
+const styleButtonRight = {
+    margin: "1px 1px 1px 0",
+    height: "38px",
+    lineHeight: "38px",
+}
 
 export default Index;
