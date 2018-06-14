@@ -28,9 +28,6 @@ const getTabData = async (tab, opts) => {
             }));
             resolve(datas);
         });
-    }).then(async r => {
-        // console.log(r);
-        return r;
     });
 
 }
@@ -38,26 +35,13 @@ const getTabData = async (tab, opts) => {
 const getChartData = async (key, opts) => {
     var params = getParams(opts);
     await guolv_data(params);
-    return get_sense_data(key, params).then(r => {
-        // console.log(r);
-        return r;
-    });
+    return get_sense_data(key, params);
 }
 
 const getHeaderData = async (key, opts) => {
     var params = getParams(opts);
-    // await guolv_data(params);
-    // return get_sense_data(key, params).then(r => {
-    //     // console.log(r);
-    //     return r;
-    // });
-    return [{
-        name: "当日营业额（万)",
-        value: "187.34"
-    }, {
-        name: "当月营业额（万)",
-        value: "2871.89"
-    }]
+    await guolv_data(params);
+    return get_sense_data(key, params);
 }
 
 const getParams = (opts) => {
