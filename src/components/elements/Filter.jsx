@@ -125,6 +125,7 @@ class Index extends React.Component {
                             Object.keys(this.state.options).map(key => {
                                 if (this.state.options[key].operate_type === "btn") {
                                     this.state.options[key].value = [];
+                                    this.state.options[key].whole = true;
                                 } else if (this.state.options[key].operate_type === "time") {
                                     this.state.options[key].value = "";
                                 }
