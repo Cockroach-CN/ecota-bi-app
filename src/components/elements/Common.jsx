@@ -1,11 +1,14 @@
 import React from "react";
+import { Flex } from "antd-mobile";
 import { classList } from "../../commons/common.js";
 import "./Style.less";
 
 const NavBar = ({ isInfo, onLeftClick, onRightClick }) =>
     <div className="ecota-navbar">
         <div onClick={onLeftClick}>
-            <i style={{ fontSize: 21 }} className={isInfo ? "iconfont icon-suoxiao" : "iconfont icon-fanhui"}></i>
+            {onLeftClick &&
+                <i style={{ fontSize: 21 }} className={isInfo ? "iconfont icon-suoxiao" : "iconfont icon-fanhui"}></i>
+            }
         </div>
         <div onClick={onRightClick}>
             <i style={{ fontSize: 21 }} className="iconfont icon-gengduo"></i>
@@ -19,7 +22,6 @@ const Tag = (props) =>
         className={classList("am-tag", props.selected ? "am-tag-active" : "am-tag-normal")} >
         <div id="am-tag-text" >{props.children}</div>
     </div>
-import { Flex } from "antd-mobile";
 
 const List2Column = (props) => {
 
