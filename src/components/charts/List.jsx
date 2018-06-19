@@ -120,7 +120,7 @@ class Panel extends React.Component {
             (datas || []).map((data, di) => (data.options || []).map((option, oi) => {
                 const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
                 if (dom && option) {
-                    dom.style.width = width - 30 + "px";
+                    dom.style.width = width - 35 + "px";
                     const chart = echarts.init(dom);
                     chart.setOption(option);
                 }
@@ -149,7 +149,7 @@ class Panel extends React.Component {
                 {(datas || []).map((data, di) =>
                     <Carousel key={data.key} style={styleTabContent} dots={(data.charts || []).length > 1 ? true : false}>
                         {(data.charts || []).map((o, ci) =>
-                            <div key={ci} className="content-chart">
+                            <div key={ci} className={`content-chart i-${ci}`}>
                                 <div id={`chart-${di}-${ci}-${unionkey}`}></div>
                                 {ci === 0 &&
                                     <i style={styleFangda} className="iconfont icon-fangda" onClick={() => onLarge((data.charts || [])[ci])} />}
@@ -171,10 +171,10 @@ const styleTabContent = {
 
 const styleFangda = {
     color: "#666666",
-    fontSize: 21,
+    fontSize: 20,
     position: "absolute",
-    right: "0.1rem",
-    bottom: "0.1rem",
+    right: "0.05rem",
+    bottom: "0.05rem",
     zIndex: 999,
 }
 

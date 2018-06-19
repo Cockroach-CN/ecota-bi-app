@@ -52,7 +52,7 @@ class Index extends React.Component {
             <NavBar isInfo
                 onRightClick={() => this.setState({ showModal: true })} />
             <div id="chart" style={styleContent} className="info-tab-content"></div>
-            <i style={styleFangda} className="iconfont icon-suoxiao" onClick={() => this.props.setPage(PAGEMAP.LIST, true)} />
+            <i style={styleSuoxiao} className="iconfont icon-suoxiao" onClick={() => this.props.setPage(PAGEMAP.LIST, true)} />
             <Filter type="info"
                 opts={params}
                 random={random}
@@ -79,9 +79,9 @@ const styleContent = {
     // boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)",
 }
 
-const styleFangda = {
+const styleSuoxiao = {
     color: "#666666",
-    fontSize: 21,
+    fontSize: 20,
     position: "absolute",
     right: "0.15rem",
     bottom: "0.15rem",
