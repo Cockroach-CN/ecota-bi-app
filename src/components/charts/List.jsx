@@ -175,7 +175,7 @@ const styleFangda = {
     position: "absolute",
     right: "0.1rem",
     bottom: "0.1rem",
-    zIndex: 99,
+    zIndex: 999,
 }
 
 const styleTabTitle = {
