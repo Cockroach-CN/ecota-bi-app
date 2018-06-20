@@ -149,7 +149,7 @@ class Panel extends React.Component {
                 {(datas || []).map((data, di) =>
                     <Carousel key={data.key} style={styleTabContent} dots={(data.charts || []).length > 1 ? true : false}>
                         {(data.charts || []).map((o, ci) =>
-                            <div key={ci} className={`content-chart i-${ci}`}>
+                            <div key={ci} className="content-chart">
                                 <div id={`chart-${di}-${ci}-${unionkey}`}></div>
                                 {ci === 0 &&
                                     <i style={styleFangda} className="iconfont icon-fangda" onClick={() => onLarge((data.charts || [])[ci])} />}
@@ -166,7 +166,7 @@ class Panel extends React.Component {
 const styleTabContent = {
     margin: "0.05rem",
     width: "calc(100 % - 0.1rem)",
-    boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)",
+    boxShadow: "0 2px 8px 0 rgba(139,139,139,0.30)"
 }
 
 const styleFangda = {
@@ -175,9 +175,9 @@ const styleFangda = {
     position: "absolute",
     right: "0.05rem",
     bottom: "0.05rem",
-    zIndex: 999,
+    zIndex: 999
 }
 
 const styleTabTitle = {
-    color: "#666666",
+    color: "#666666"
 }
