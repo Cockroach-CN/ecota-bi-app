@@ -2,7 +2,7 @@ import React from "react";
 import echarts from "echarts";
 import Filter from "../elements/Filter.jsx";
 import { o2o } from "../../commons/common.js"
-import { Toast } from "antd-mobile";
+import { Toast, Carousel } from "antd-mobile";
 import { NavBar } from "../elements/Common.jsx";
 import { PAGEMAP } from "../../commons/common.js";
 import { getChartData } from "../../services/service.js";
@@ -51,7 +51,11 @@ class Index extends React.Component {
         return <div id="container">
             <NavBar isInfo
                 onRightClick={() => this.setState({ showModal: true })} />
-            <div id="chart" style={styleContent} className="info-tab-content"></div>
+            <Carousel dots={false}>
+                <div className="content-chart">
+                    <div id="chart" style={styleContent} className="info-tab-content"></div>
+                </div>
+            </Carousel>
             <i style={styleSuoxiao} className="iconfont icon-suoxiao" onClick={() => this.props.setPage(PAGEMAP.LIST, true)} />
             <Filter type="info"
                 opts={params}
@@ -69,7 +73,7 @@ export default Index;
 
 
 const styleContent = {
-    height: "calc(100% - 0.78rem)",
+    height: "calc(100vh - 0.78rem)",
     width: "100%",
     background: "#FFF",
     padding: "0.39rem 0rem",
@@ -81,7 +85,7 @@ const styleContent = {
 
 const styleSuoxiao = {
     color: "#666666",
-    fontSize: 20,
+    fontSize: 19,
     position: "absolute",
     right: "0.15rem",
     bottom: "0.15rem",

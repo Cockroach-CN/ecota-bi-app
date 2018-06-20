@@ -52,8 +52,10 @@ class Index extends React.Component {
             <WhiteSpace size="sm" />
             {filterList.map((f, i) => {
                 if (options[f.key]) {
-                    return <div key={i} className={`options-container ${i === (filterList.length - 1) && "last"}`}>
-                        <div>
+                    return <div key={i}
+                        className={`options-container ${f.type === "time" ? "time" : "btn"} 
+                            ${i === (filterList.length - 1) ? "last" : ""}`}>
+                        {/* <div>
                             {f.name}
                             {f.type === "btn" ?
                                 <Tag selected={options[f.key].whole}
@@ -71,7 +73,7 @@ class Index extends React.Component {
                                         this.setState(this.state);
                                     }}>重置</Tag>
                             }
-                            {/* {f.type === "time" && <span className="segmented-group">
+                            {f.type === "time" && <span className="segmented-group">
                                 <SegmentedControl
                                     selectedIndex={options[f.key].type === "year" ? 0 : options[f.key].type === "month" ? 1 : 2}
                                     values={['年', '月', '日']}
@@ -80,8 +82,18 @@ class Index extends React.Component {
                                         options[f.key].type = index === 0 ? "year" : index === 1 ? "month" : "date";
                                         this.setState(this.state);
                                     }} />
-                            </span>} */}
-                        </div>
+                            </span>} 
+                        </div>*/}
+                        {f.type === "btn" && <div>
+                            {f.name}
+                            <Tag selected={options[f.key].whole}
+                                style={styleTagRight}
+                                onClick={() => {
+                                    options[f.key].value = [];
+                                    options[f.key].whole = true;
+                                    this.setState(this.state);
+                                }}>全部</Tag>
+                        </div>}
                         {f.type === "btn" && <div>
                             <List2Column>
                                 {f.options.map((opt, j) =>
@@ -112,7 +124,7 @@ class Index extends React.Component {
                                     this.setState(this.state);
                                 }}>
                                 {/* <List.Item arrow="horizontal">{TimeType[options[f.key].type]}</List.Item> */}
-                                <List.Item arrow="horizontal">时间</List.Item>
+                                <List.Item arrow="horizontal">{f.name}</List.Item>
                             </DatePicker>
                         </div>}
                     </div>

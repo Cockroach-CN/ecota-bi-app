@@ -120,7 +120,7 @@ class Panel extends React.Component {
             (datas || []).map((data, di) => (data.options || []).map((option, oi) => {
                 const dom = document.getElementById(`chart-${di}-${oi}-${unionkey}`);
                 if (dom && option) {
-                    dom.style.width = width - 35 + "px";
+                    dom.style.width = width - 40 + "px";
                     const chart = echarts.init(dom);
                     chart.setOption(option);
                 }
@@ -171,10 +171,10 @@ const styleTabContent = {
 
 const styleFangda = {
     color: "#666666",
-    fontSize: 20,
+    fontSize: 19,
     position: "absolute",
-    right: "0.05rem",
-    bottom: "0.05rem",
+    right: "0.1rem",
+    bottom: "0.08rem",
     zIndex: 999
 }
 

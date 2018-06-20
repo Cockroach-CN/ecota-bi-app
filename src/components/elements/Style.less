@@ -18,9 +18,25 @@
 .options-container {
     color: #333333;
     text-align: left;
-    &.last>div.options-time {
+    margin-bottom: 5px;
+    &.btn {
         border-bottom: none;
     }
+    &.time {
+        margin-bottom: 0px;
+        border-top: 1px solid #ddd;
+        >div.options-time {
+            border-bottom: none;
+        }
+    }
+    &.last {
+        margin-bottom: 0px;
+        border-bottom: none;
+        >div.options-time {
+            border-bottom: none;
+        }
+    }
+
     .segmented-group {
         float: right;
         width: 150px;
@@ -31,18 +47,22 @@
         }
     }
     .options-time {
+        padding-right: 0;
         padding-top: 0px;
         border-bottom: 1px solid #ddd;
         >div>div.am-list-item {
             padding: 0px;
         }
-    }
-    >div:first-child{
-        margin-bottom: 5px;
-        border-bottom: 1px solid #ddd;
+        .am-list-content {
+            font-size: 15px;
+        }
     }
     >div {
         padding: 5px 10px;
     }
+    >div:first-child:not(.options-time){
+        margin-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    
 }
-
