@@ -147,7 +147,10 @@ class Panel extends React.Component {
                     </div> : undefined
                 }
                 {(datas || []).map((data, di) =>
-                    <Carousel key={data.key} style={styleTabContent} dots={(data.charts || []).length > 1 ? true : false}>
+                    <Carousel key={data.key}
+                        style={styleTabContent}
+                        swiping={(data.charts || []).length > 1 ? true : false}
+                        dots={(data.charts || []).length > 1 ? true : false}>
                         {(data.charts || []).map((o, ci) =>
                             <div key={ci} className="content-chart">
                                 <div id={`chart-${di}-${ci}-${unionkey}`}></div>

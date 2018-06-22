@@ -51,7 +51,7 @@ class Index extends React.Component {
         return <div id="container">
             <NavBar isInfo
                 onRightClick={() => this.setState({ showModal: true })} />
-            <Carousel dots={false}>
+            <Carousel dots={false} swiping={false}>
                 <div className="content-chart">
                     <div id="chart" style={styleContent} className="info-tab-content"></div>
                 </div>
