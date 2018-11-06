@@ -20,7 +20,7 @@ class Index extends React.Component {
       title: tab.name
     }));
     this.state = {
-      random: 0,
+      random: init ? 0 : Math.random(),
       showModal: init || false,
       tabs: tabs || [],
       settingTabs: settingTabs || []
@@ -160,8 +160,8 @@ class Panel extends React.Component {
             ))}
           </div>
         ) : (
-          undefined
-        )}
+            undefined
+          )}
         {(datas || []).map((data, di) => (
           <Carousel
             key={data.key}
